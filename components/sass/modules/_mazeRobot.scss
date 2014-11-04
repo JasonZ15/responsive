@@ -1,0 +1,59 @@
+#maze-robot table {
+  margin: 5px;
+  border-collapse: separate;
+}
+#maze-robot table td {
+  border: 2px solid #eee;
+  padding: 30px;
+}
+
+#maze-robot table td.end {
+  border-color: $red;
+}
+#maze-robot table td.robot {
+  position: relative;
+  overflow: hidden;
+}
+#maze-robot table td.robot:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url(../images/robot.png) center center no-repeat; 
+}
+#maze-robot table td.robot.face-north:before {
+ -ms-transform: rotate(-90deg); 
+  -webkit-transform: rotate(-90deg); 
+  transform: rotate(-90deg);
+}
+#maze-robot table td.robot.face-west:before {
+ -ms-transform: scaleX(-1); 
+  -webkit-transform: scaleX(-1); 
+  transform: scaleX(-1);
+}
+#maze-robot table td.robot.face-east:before {
+ -ms-transform: rotate(0deg); 
+  -webkit-transform: rotate(0deg); 
+  transform: rotate(0deg);
+}
+#maze-robot table td.robot.face-south:before {
+ -ms-transform: rotate(90deg); 
+  -webkit-transform: rotate(90deg); 
+  transform: rotate(90deg);
+}
+
+
+#maze-robot table td.north {
+  border-top-color: $dark;
+}
+#maze-robot table td.south {
+  border-bottom-color: $dark;
+}
+#maze-robot table td.west {
+  border-left-color: $dark;
+}
+#maze-robot table td.east {
+  border-right-color: $dark;
+}

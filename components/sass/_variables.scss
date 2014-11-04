@@ -1,0 +1,24 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
+@include border-box-sizing; // command in sacc. include it in the mixing.
+
+//Add Color Palette
+$dark: #332532;
+$purple: #644D52;
+$red: #F77A52;
+$orange: #FF974F;
+$taupe: #A49A87;
+$light: #FFFFFF;
+
+$backgroundColor: $light;
+$typeDefault: $dark;
+
+//Font variables
+$fontFamily: 'PT Sans Narrow', 'Helvetica Nene', Helvetica, Arial, sans-serif;
+
+$normal: 400;
+$bold: 700;
+
+$headFont: $normal 1.5em/1.5em $fontFamily;
+$mainFont: $normal 1em/1.5em $fontFamily;
+$headColor: lighten($purple, 10); //sass mixing. lighten by certain amount.

@@ -3,3 +3,6 @@ node_modules
 .tmp
 .sass-cache
 builds/**/images/*
+builds/development/components
+.project
+npm-debug.log

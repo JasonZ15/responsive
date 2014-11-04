@@ -14,3 +14,13 @@
 @import "susy";
 @import "breakpoint";
 
+//Core Partial
+@import "variables";
+@import "mixins"; //like js functions
+@import "base";
+@import "layout";
+
+//Import Modules
+@import "modules/intro";
+@import "modules/mazeRobot";
+@import "modules/app";
