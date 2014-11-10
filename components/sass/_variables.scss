@@ -2,6 +2,18 @@
 
 @include border-box-sizing; // command in sacc. include it in the mixing.
 
+$susy: (
+  columns: 12,
+  container: 60em,
+  gutters: 1/4,
+  gutter-position: inside
+);
+
+$narrow: 400px;
+$small: 650px;
+$medium: 960px;
+$wide: 1200px;
+
 //Add Color Palette
 $dark: #332532;
 $purple: #644D52;
@@ -21,4 +33,4 @@ $bold: 700;
 
 $headFont: $normal 1.5em/1.5em $fontFamily;
 $mainFont: $normal 1em/1.5em $fontFamily;
-$headColor: lighten($purple, 10); //sass mixing. lighten by certain amount.
+$headColor: lighten($purple, 10%); //sass mixing. lighten by certain amount.

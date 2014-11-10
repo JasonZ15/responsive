@@ -4,5 +4,8 @@ node_modules
 .sass-cache
 builds/**/images/*
 builds/development/components
+builds/development/css/*
+builds/development/js/*
 .project
 npm-debug.log
+

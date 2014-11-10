@@ -161,7 +161,7 @@ $(function(){
     });
     
     //automatically move. use delay to slow motion.
-    robotControl("startGame");
+    //robotControl("startGame");
 
     //find the path. use a counter array to record the path.
     

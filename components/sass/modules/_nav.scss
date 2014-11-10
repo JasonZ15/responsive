@@ -1,0 +1,66 @@
+header #nav {
+  @include clearfix;
+  @include background-image(linear-gradient(top, lighten($purple, 10%), $purple));
+  width: 100%;
+  
+  .navbar {
+    @include container;
+    .brand {
+      @include span(4);
+      float: left;
+      font-weight: $bold;
+      text-align: center;
+      text-transform: uppercase;
+      background: $orange;
+      a {
+        color: $light;
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        padding: 9px;
+        
+        @include breakpoint (0 $small) {
+          font-size: 0.7em;
+          span {display: none}
+        }
+      }//a
+    }//brand
+    
+    ul {
+      @include span(8 at 5 of 12);
+      li {
+        float: left;
+        a {
+          color: rgba($light, 0.8);
+          text-decoration: none;
+          display: inline-block;
+          paper-button {
+            text-transform: none;
+            font-size: 0.8em; 
+            min-width: 3em;
+            &::shadow #ripple {
+              color: $red;
+            }      
+            &:hover {
+              background-color: darken($purple, 8%);
+              color: $light;
+            }
+            core-icon {
+              width: 16px;
+              height: 16px;
+            }//core-icon          
+          }//paper-button
+          
+          @include breakpoint(0 $small) {
+            span {display: none;}        
+          }
+          @include breakpoint($small $medium) {
+            core-icon {display: none;}
+          }
+          
+        }//a
+      }//li
+    }//ul
+  }//navbar
+  
+}
