@@ -17,7 +17,7 @@ header #nav {
         text-decoration: none;
         text-align: center;
         display: inline-block;
-        padding: 9px;
+        padding: 8px;
         
         @include breakpoint (0 $small) {
           font-size: 0.7em;
@@ -33,30 +33,40 @@ header #nav {
         a {
           color: rgba($light, 0.8);
           text-decoration: none;
+          padding: 10px 10px 10px 45px;
           display: inline-block;
-          paper-button {
-            text-transform: none;
-            font-size: 0.8em; 
-            min-width: 3em;
-            &::shadow #ripple {
-              color: $red;
-            }      
-            &:hover {
-              background-color: darken($purple, 8%);
-              color: $light;
-            }
-            core-icon {
-              width: 16px;
-              height: 16px;
-            }//core-icon          
-          }//paper-button
+          font-size: 0.8em;
+
+          //icon styles
+          background-size: 35px;
+          background-repeat: no-repeat;
+          background-position: 2px;
+
+          &.info { background-image: url('../images/icons/info.png');}
+          &.rooms { background-image: url('../images/icons/rooms.png');}
+          &.dining { background-image: url('../images/icons/dining.png');}
+          &.events { background-image: url('../images/icons/events.png');}
+          &.attractions { background-image: url('../images/icons/attractions.png');}
+
+          &:hover {
+            background-color: darken($purple, 8%);
+            color: $light;
+          }//:hover
           
           @include breakpoint(0 $small) {
-            span {display: none;}        
-          }
+            padding: 10px 18px;
+            &::after {
+              content: '\000a0';
+              display: block;
+            }
+            span {display: none;
+            } //span
+          } //breakpoint
+
           @include breakpoint($small $medium) {
-            core-icon {display: none;}
-          }
+            padding-left: 10px;
+            &.icon { background-image: none; }
+          } //breakpoint
           
         }//a
       }//li

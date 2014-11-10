@@ -27,10 +27,10 @@ header {
       }
       p {
         text-align: center;
-        padding-top: 30px;
-        a {color: $light;}
-        a:active {color: $orange;}
-        /deep/ core-icon {width: 32px; height: 32px;}        
+        img {
+          padding-top: 50px;
+          max-width: 50px;
+        } //img 
       }     
     }
   }
