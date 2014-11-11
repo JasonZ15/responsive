@@ -2,7 +2,6 @@ header #nav {
   @include clearfix;
   @include background-image(linear-gradient(top, lighten($purple, 10%), $purple));
   width: 100%;
-  
   .navbar {
     @include container;
     .brand {
@@ -22,10 +21,9 @@ header #nav {
         @include breakpoint (0 $small) {
           font-size: 0.7em;
           span {display: none}
-        }
+        }//breakpoint
       }//a
-    }//brand
-    
+    }//brand   
     ul {
       @include span(8 at 5 of 12);
       li {
@@ -48,29 +46,29 @@ header #nav {
           &.events { background-image: url('../images/icons/events.png');}
           &.attractions { background-image: url('../images/icons/attractions.png');}
 
-          &:hover {
-            background-color: darken($purple, 8%);
-            color: $light;
-          }//:hover
-          
           @include breakpoint(0 $small) {
             padding: 10px 18px;
             &::after {
-              content: '\000a0';
+              content: '\000a0';//css for nothing
               display: block;
-            }
+            }//::after
             span {display: none;
-            } //span
-          } //breakpoint
+            }//span
+          }//breakpoint
 
           @include breakpoint($small $medium) {
             padding-left: 10px;
             &.icon { background-image: none; }
-          } //breakpoint
-          
+          }//breakpoint
+
+          -webkit-transition: background-color 0.35s, color 0.35s;
+          transition: background-color 0.35s, color 0.35s;
+          &:hover {
+            background-color: darken($purple, 8%);
+            color: $light;
+          }//:hover         
         }//a
       }//li
     }//ul
   }//navbar
-  
-}
+}//header nav
