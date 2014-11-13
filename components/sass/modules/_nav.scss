@@ -5,7 +5,7 @@ header #nav {
   .navbar {
     @include container;
     .brand {
-      @include span(4);
+      @include span(4 of 12);
       float: left;
       font-weight: $bold;
       text-align: center;
@@ -25,7 +25,7 @@ header #nav {
       }//a
     }//brand   
     ul {
-      @include span(8 at 5 of 12);
+      @include span(8 of 12 last);
       li {
         float: left;
         a {
@@ -66,7 +66,10 @@ header #nav {
           &:hover {
             background-color: darken($purple, 8%);
             color: $light;
-          }//:hover         
+          }//:hover   
+          &:active {
+            background-color: $dark;
+          }//:hover   
         }//a
       }//li
     }//ul

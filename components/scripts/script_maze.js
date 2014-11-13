@@ -149,7 +149,7 @@ $(function(){
             $("#space-" + r.robotX + "_" + r.robotY).addClass("robot face-" + r.robotOrientation);    
         } else {
             $('td').removeClass(function (index, css) { //A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.
-                return (css.match (/(^|\s)face-\S+/g) || []).join(' ');
+                return (css.match(/(^|\s)face-\S+/g) || []).join(' ');
             });
             r[control]();
             $("#space-" + r.robotX + "_" + r.robotY).addClass("face-" + r.robotOrientation);    
