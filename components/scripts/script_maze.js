@@ -101,12 +101,14 @@ Robot.prototype.turnRight = function() {
     this.turnLeft();
     this.turnLeft();
     this.turnLeft();
-}
+};
 Robot.prototype.turnBack = function() {
     this.turnLeft();
     this.turnLeft();
-}
-
+};
+Robot.prototype.turnTo = function(direction) {
+    this.robotOrientation = direction;
+};
 Robot.prototype.startOver = function() {
     this.robotX = m.startX;
     this.robotY = m.startY;
@@ -138,20 +140,19 @@ $(function(){
         return html; 
     }
         
-    function robotControl(controlName) {
-        var control = controlName; 
-        if(control === "startGame") {
+    function robotControl(controlName, detail) {
+        if(controlName === "startGame") {
             $('#maze-robot').html(showMaze());
             $("#space-" + r.robotX + "_" + r.robotY).addClass("robot face-" + r.robotOrientation);
-        } else if(control === "moveForward" || control === "startOver") {
+        } else if(controlName === "moveForward" || controlName === "startOver") {
             $('td').removeClass("robot");
-            r[control]();
+            r[controlName]();
             $("#space-" + r.robotX + "_" + r.robotY).addClass("robot face-" + r.robotOrientation);    
         } else {
             $('td').removeClass(function (index, css) { //A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.
                 return (css.match(/(^|\s)face-\S+/g) || []).join(' ');
             });
-            r[control]();
+            r[controlName](detail);
             $("#space-" + r.robotX + "_" + r.robotY).addClass("face-" + r.robotOrientation);    
         }
     }
@@ -160,14 +161,37 @@ $(function(){
         robotControl($(this).attr('name'));
     });
     
+    $('body').keydown(function(event) { //The event object is always passed to the handler and contains a lot of useful information what has happened.
+        event.preventDefault();
+        var key = event.which || event.keyCode;
+        var direction;
+        switch (key) {
+            case 37:
+              direction = "west";
+              break;
+            case 38:
+              direction = "north";
+              break;
+            case 39:
+              direction = "east";
+              break;
+            case 40:
+              direction = "south";
+              break;
+        };
+        if(direction !== r.robotOrientation) {
+            robotControl("turnTo", direction);  
+        } else {
+            robotControl("moveForward");
+        };
+    });
+    
     //automatically move. use delay to slow motion.
     //robotControl("startGame");
 
     //find the path. use a counter array to record the path.
     
 });
-
-
 
 
 
