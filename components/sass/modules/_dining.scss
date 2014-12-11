@@ -39,4 +39,13 @@
       }//p
     }//section
   }//breakpoint
+
+  #roomservice {
+    margin-top: 20px;
+    @include background-image(linear-gradient(top, $light, lighten($orange, 30)));
+    @include pad(1,1);
+    text-align: center;
+    border-top: 1px solid $red;
+    border-bottom: 1px solid $red;
+  }
 }//dining

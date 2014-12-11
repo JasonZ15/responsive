@@ -1,6 +1,7 @@
 header {
   .fullheight {
     @include backImage('../images/hotel/splash_hotelphoto.jpg');
+    background-attachment: fixed;
 
     @include display-flex();
     @include align-items(center);
