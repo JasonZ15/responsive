@@ -1,11 +1,26 @@
 #events {
   padding: 0;
+  @include clearfix;
 
   .event {
     position: relative; // for the text content
     @include container(100%);
     @include breakpoint($small) {
       @include span(6 of 12 0);
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      background: rgba($dark, 0.7);
+      padding: 30px;
+      color: $light;
+      font-weight: $normal;
+      line-height: 130%;
+    }
+
+    h2 {
+      color: $orange;
     }
   }
 

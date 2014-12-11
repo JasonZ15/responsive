@@ -24,6 +24,8 @@
       @include border-radius(10px);
       background: rgba($light, 0.8);
       padding: 20px;
+      margin-top: 200px; //for older than IE 10
+      margin-bottom: 200px;
 
       h1 {
         color:$red;
