@@ -2,18 +2,18 @@
   @include background-image(linear-gradient(top, $taupe, $purple));
   color: $light;
   @include clearfix;
-  
+
   #{headings()} {
    color: $light;
   }
-  
+
   .heading {
     h1 {
       font-size: 2.6em;
       font-weight: $normal;
     }
   }
-  
+
   #usefulinfo {
     @include clearfix;
     section {
@@ -25,19 +25,19 @@
           @include span(1 of 2);
         }
       }
-      
+
       h2 {
         color: lighten($taupe, 25);
         font-weight: $normal;
         line-height: 110%;
         padding: 10px 0;
       }// h2
-      
+
       p {
         font-size: 1em;
         line-height: 130%;
       }// p
-      
+
       ul {
         li {
           list-style: square;
@@ -71,7 +71,7 @@
     border: 1px solid rgba($light, 0.4);
     padding: 20px;
     @include border-radius(20px);
-    
+
     @include breakpoint($wide) {
       @include background-image(url('../images/misc/greenplanet.png'));
       background-size: 400px;

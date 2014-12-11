@@ -1,6 +1,6 @@
 // style.scss
 // ==============
- 
+
 //Compass imports
 @import "compass";
 @import "compass/reset";
@@ -27,6 +27,8 @@
 @import "modules/hotelinfo";
 @import "modules/mazeRobot";
 @import "modules/app";
+@import "modules/rooms";
+@import "modules/dining";
 
 //External Import
-@import "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"; 
+@import "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
