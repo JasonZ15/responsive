@@ -45,19 +45,52 @@ $(function() {
     }
   });
 
-  var pin = new ScrollScene({
+  //pin down navigation at the top
+  var navPin = new ScrollScene({
     triggerElement: '#nav',
   }).setPin('#nav').addTo(controller);
 
+  //animation for room content
+  var roomOrigin = {
+    bottom: -700,
+    opacity: 0,
+    scale: 0
+  };
+
+  var roomDest = {
+    repeat: 1,
+    yoyo: true,
+    bottom: 0,
+    opacity: 1,
+    scale: 1,
+    ease: Back.easeOut
+  };
+
+  $('#rooms .room').each(function() {
+    var articleId = '#' + $(this).attr('id');
+
+    var roomstween = TweenMax.staggerFromTo(
+      articleId + ' ' + '.content', 1, roomOrigin, roomDest
+    );
+
+    var roomsScene = new ScrollScene({
+      triggerElement: articleId,
+      offset: -topoffset,
+      duration: 500
+    }).setPin(articleId).setTween(roomstween).addTo(controller);
+  });
+
+  //pops in text content for attractions section
   var attractionstween = TweenMax.staggerFromTo(
     '#attractions article',
     1,
     {opacity: 0, scale: 0},
-    {delay: 0.3, opacity: 1, scale: 1, ease: Back.easeOut});
+    {delay: 0.3, opacity: 1, scale: 1, ease: Back.easeOut}
+  );
 
-  var scene = new ScrollScene({
+  var attractionsScene = new ScrollScene({
     triggerElement: '#attractions',
     offset: -topoffset
   }).setTween(attractionstween).addTo(controller);
-  
-})
+
+});
