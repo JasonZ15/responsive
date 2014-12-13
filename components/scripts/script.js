@@ -66,7 +66,7 @@ $(function() {
     ease: Back.easeOut
   };
 
-  $('#rooms .room').each(function() {
+  $('#rooms .room-group').each(function() {
     var articleId = '#' + $(this).attr('id');
 
     var roomstween = TweenMax.staggerFromTo(
