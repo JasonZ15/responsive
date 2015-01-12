@@ -6,9 +6,11 @@ $(function() {
 
   var wheight = $(window).height() - topoffset;
   $('.fullheight').css('height', wheight);
+  $('header .fullheight').css('height', wheight + 300);
   $(window).resize(function() {
     var wheight = $(window).height() - topoffset;
     $('.fullheight').css('height', wheight);
+    $('header .fullheight').css('height', wheight + 300);
   });
 
   // current nav item active
@@ -93,4 +95,15 @@ $(function() {
     offset: -topoffset
   }).setTween(attractionstween).addTo(controller);
 
+  // parallax
+  new ScrollScene({
+    triggerElement: "header",
+    duration: $(window).height() + 330,
+    offset: 0
+  })
+  .addTo(controller)
+  .triggerHook("onCenter")
+  .setTween(new TimelineMax().add([
+    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "-300px", ease: Linear.easeNone})
+    ]));
 });
