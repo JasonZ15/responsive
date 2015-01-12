@@ -106,4 +106,18 @@ $(function() {
   .setTween(new TimelineMax().add([
     TweenMax.to("header .fullheight", 1, {backgroundPositionY: "-300px", ease: Linear.easeNone})
     ]));
+
+  var resumeScene = new ScrollScene({
+    triggerElement: "#hotelinfo",
+    duration: $('#hotelinfo').height() + $(window).height(),
+    offset: 0
+  });
+  resumeScene.addTo(controller)
+  .triggerHook("onEnter")
+  .setTween(new TimelineMax().add([
+    TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-700%", ease: Linear.easeNone})
+    ]));
+  $(window).resize(function() {
+    resumeScene.duration($('#hotelinfo').height() + $(window).height());
+  });
 });
