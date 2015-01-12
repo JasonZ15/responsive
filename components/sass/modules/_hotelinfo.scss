@@ -1,7 +1,12 @@
 #hotelinfo {
-  @include background-image(linear-gradient(top, $taupe, $purple));
   color: $light;
   @include clearfix;
+  @include background(image-url('../images/hotel/molecule.png'),
+                      image-url('../images/hotel/molecule.png'),
+                      linear-gradient(top, $taupe, $purple),
+                      radial-gradient(#c00, #fff 100px));
+  background-repeat: repeat-y;
+  background-position: -320px 0px, right -320px top 0px, 0px 0px;
 
   #{headings()} {
    color: $light;
