@@ -126,7 +126,7 @@ $(function() {
   resumeScene.addTo(controller)
   .triggerHook("onEnter")
   .setTween(new TimelineMax().add([
-    TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-700%", ease: Linear.easeNone})
+    TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-1000%", ease: Linear.easeNone})
     ]));
 
   $(window).resize(function() {
