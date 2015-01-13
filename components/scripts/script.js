@@ -107,6 +107,17 @@ $(function() {
     TweenMax.to("header .fullheight", 1, {backgroundPositionY: "-300px", ease: Linear.easeNone})
     ]));
 
+  var welcomeScene = new ScrollScene({
+    triggerElement: "#welcome",
+    duration: $('#welcome').height(),
+    offset: 0
+  });
+  welcomeScene.addTo(controller)
+  .triggerHook("onCenter")
+  .setTween(new TimelineMax().add([
+    TweenMax.fromTo("#welcome", 1, {backgroundPositionY: "400px, 0px"}, {backgroundPositionY: "20px, 0px", ease: Linear.easeNone})
+    ]));
+
   var resumeScene = new ScrollScene({
     triggerElement: "#hotelinfo",
     duration: $('#hotelinfo').height() + $(window).height(),
