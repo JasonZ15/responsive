@@ -96,13 +96,13 @@ $(function() {
   }).setTween(attractionstween).addTo(controller);
 
   // parallax
-  new ScrollScene({
+  var headerScene = new ScrollScene({
     triggerElement: "header",
-    duration: $(window).height() + 330,
+    duration: $(window).height(),
     offset: 0
-  })
-  .addTo(controller)
-  .triggerHook("onCenter")
+  });
+  headerScene.addTo(controller)
+  .triggerHook("onLeave")
   .setTween(new TimelineMax().add([
     TweenMax.to("header .fullheight", 1, {backgroundPositionY: "-300px", ease: Linear.easeNone})
     ]));
@@ -128,7 +128,9 @@ $(function() {
   .setTween(new TimelineMax().add([
     TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-700%", ease: Linear.easeNone})
     ]));
+
   $(window).resize(function() {
     resumeScene.duration($('#hotelinfo').height() + $(window).height());
+    headerScene.duration($(window).height());
   });
 });
