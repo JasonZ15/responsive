@@ -24,6 +24,11 @@ $(function() {
         $(this).addClass('active');
       }
     });
+    if (windowpos > ($('#rooms').offset().top - 1)) {
+      $('.brand').addClass('inactive');
+    } else {
+      $('.brand').removeClass('inactive');
+    }
   });
 
   // smooth scroll
@@ -139,6 +144,13 @@ $(function() {
   .setTween(new TimelineMax().add([
     TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px", ease: Linear.easeNone})
     ]));
+  var brandScene = new ScrollScene({
+    triggerElement: "#intro h1"
+  });
+  brandScene.addTo(controller)
+  .triggerHook("onLeave")
+  .setTween(new TimelineMax().add([
+    TweenMax.fromTo(".brand", 1, {backgroundPositionY: "-80px"}, {backgroundPositionY: "0px", ease: Elastic.easeInOut})
     ]));
 
   $(window).resize(function() {

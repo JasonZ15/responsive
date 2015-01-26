@@ -13,6 +13,20 @@ header #nav {
       text-align: center;
       text-transform: uppercase;
       background: $orange;
+      -webkit-transition: background-color 0.35s, color 0.35s;
+      transition: background-color 0.35s, color 0.35s;
+
+      @include background-image(image-url('../images/hotel/logo.png'));
+      background-repeat: no-repeat;
+      background-position: 34px top;
+      background-size: 52px;
+
+      &.inactive {
+        background-color: transparent;
+      }
+      &.inactive:hover {
+        background-color: darken($purple, 8%);
+      }
       a {
         color: $light;
         text-decoration: none;
@@ -27,7 +41,7 @@ header #nav {
       }//a
     }//brand
     ul {
-      @include span(9 of 12 last);
+      float: right;
       li {
         float: left;
         a {
@@ -70,12 +84,9 @@ header #nav {
             background-color: darken($purple, 8%);
             color: $light;
           }//:hover
-          &:active {
-            background-color: $dark;
-          }//:active
-
           &.active {
             color: $orange;
+            background-color: darken($purple, 8%);
           }//active
         }//a
       }//li
