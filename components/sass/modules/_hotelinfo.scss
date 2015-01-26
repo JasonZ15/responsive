@@ -3,10 +3,9 @@
   @include clearfix;
   @include background(image-url('../images/hotel/molecule.png'),
                       image-url('../images/hotel/molecule.png'),
-                      linear-gradient(top, $taupe, $purple),
-                      radial-gradient(#c00, #fff 100px));
+                      linear-gradient(top, $taupe, $purple));
   background-repeat: repeat-y;
-  background-position: -320px 0px, right -320px top 0px, 0px 0px;
+  background-position: -228px -200px, 124% -300px, 0px 0px;
 
   #{headings()} {
    color: $light;
@@ -23,7 +22,7 @@
     @include clearfix;
     section {
       @include breakpoint($small) {
-        @include span(1 of 3);
+        @include span(1 of 2);
       }
       @include breakpoint(450px $small) {
         &.checklist {
@@ -60,8 +59,18 @@
           border-top: 1px solid rgba($light, 0.4);
           padding: 15px 0;
           margin-left: 0;
+          a {
+            display: block;
+            font-weight: bold;
+          }
+          span {
+            float: right;
+          }
           strong {
             color: lighten($taupe, 25);
+          }
+          p {
+            margin-top: 6px;
           }
           &:first-child {
             border-top: none;
@@ -69,6 +78,25 @@
         }//li
       }//ul
     }//section#arrivalinfo
+    section#services {
+      ul {
+        li {
+          padding-bottom: 6px;
+          span {
+            display: block;
+          }
+        }
+      }
+    }//section#services
+    section#accessibility {
+      padding-top: 16px;
+      ul {
+        padding-top: 8px;
+        li {
+          display: inline-block;
+        }
+      }
+    }
   }//usefulinfo
   #greenprogram {
     background-color: rgba(darken($purple, 10), 0.3);
@@ -78,11 +106,15 @@
     @include border-radius(20px);
 
     @include breakpoint($wide) {
-      @include background-image(url('../images/misc/greenplanet.png'));
-      background-size: 400px;
+      @include background-image(url('../images/hotel/about_me.png'));
+      background-size: 1200px;
       background-repeat: no-repeat;
-      background-position: 120% center;
-      padding-right: 300px;
+      background-position: 50px -220px;
+      padding-right: 210px;
+    }
+
+    h2 {
+      font-size: 1.2em;
     }
   }
 }
