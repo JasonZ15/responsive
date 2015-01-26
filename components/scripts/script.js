@@ -120,7 +120,7 @@ $(function() {
   welcomeScene.addTo(controller)
   .triggerHook("onCenter")
   .setTween(new TimelineMax().add([
-    TweenMax.fromTo("#welcome", 1, {backgroundPositionY: "400px, 0px"}, {backgroundPositionY: "20px, 0px", ease: Linear.easeNone})
+    TweenMax.fromTo("#welcome", 1, {backgroundPositionY: "400px, 0px"}, {backgroundPositionY: "56px, 0px", ease: Linear.easeNone})
     ]));
 
   var resumeScene = new ScrollScene({
