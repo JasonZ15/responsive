@@ -144,6 +144,16 @@ $(function() {
   .setTween(new TimelineMax().add([
     TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px", ease: Linear.easeNone})
     ]));
+
+  var quoteScene = new ScrollScene({
+    triggerElement: "#rooms"
+  });
+  quoteScene.addTo(controller)
+  .triggerHook("onCenter")
+  .setTween(new TimelineMax().add([
+    TweenMax.fromTo("#rooms", 1, {backgroundPositionX: "100px"}, {backgroundPositionX: "1000px", ease: Expo.easeInOut})
+    ]));
+
   var brandScene = new ScrollScene({
     triggerElement: "#intro h1"
   });

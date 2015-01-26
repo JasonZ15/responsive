@@ -1,11 +1,32 @@
 #rooms {
+  @include background(image-url('../images/hotel/graphic_design.jpg'));
+  background-repeat: repeat-x;
+  background-position: right -100% bottom 98.5%;
+  padding-bottom:0;
+
   header {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+    padding-top: 12px;
     @include container(90%);
     @include breakpoint($medium) {
       @include container;
       @include pad(1,1);
     }//breakpoint
+
+    h1 {
+      text-align: center;
+    }
+    p {
+      font-size: 1.3em;
+      padding-top: 12px;
+      text-align: center;
+      span {
+        font-size: 0.7em;
+        display: inline-block;
+        font-weight: bold;
+        color: #999;
+      }
+    }
   }//header
 
   .room-group {
@@ -13,8 +34,15 @@
   }
 
   #piccadilly { @include backImage('../images/hotel/rooms_piccadilly.jpg');}
-  #cambridge { @include backImage('../images/hotel/rooms_cambridge.jpg');}
-  #westminster {@include backImage('../images/hotel/rooms_westminster.jpg');}
+  #cambridge {
+    @include backImage('../images/hotel/rooms_cambridge.jpg'); background-position-y: top;
+    .room {
+      @include breakpoint($small) {
+        @include pad(1,7);
+      }//breakpoint
+    }
+  }
+  #westminster {@include backImage('../images/hotel/thegmic.jpg'); background-position-y: top;}
   #oxford {@include backImage('../images/hotel/rooms_oxford.jpg');}
   #victoria {@include backImage('../images/hotel/rooms_victoria.jpg');}
   #manchester {@include backImage('../images/hotel/rooms_manchester.jpg');}
