@@ -13,3 +13,10 @@ body {
 strong {
   font-weight: $bold;
 }
+
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
