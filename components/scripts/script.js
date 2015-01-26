@@ -127,10 +127,21 @@ $(function() {
   .triggerHook("onEnter")
   .setTween(new TimelineMax().add([
     TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-1000%", ease: Linear.easeNone})
+  var webdevScene = new ScrollScene({
+    triggerElement: "#dining",
+    duration: $('#dining').height() + $(window).height(),
+    offset: 0
+  });
+  webdevScene.addTo(controller)
+  .triggerHook("onEnter")
+  .setTween(new TimelineMax().add([
+    TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px", ease: Linear.easeNone})
+    ]));
     ]));
 
   $(window).resize(function() {
     resumeScene.duration($('#hotelinfo').height() + $(window).height());
     headerScene.duration($(window).height());
+    webdevScene.duration($('#hotelinfo').height() + $(window).height());
   });
 });
