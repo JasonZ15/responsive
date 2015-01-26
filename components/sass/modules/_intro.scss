@@ -7,31 +7,36 @@ header {
     @include justify-content(center);
 
     .hgroup {
-      padding: 100px 0;
+      padding: 174px 0 100px 0;
+      @include background-image(url('../images/hotel/logo_top.png'));
+      background-repeat: no-repeat;
+      background-position: center -20px;
       h1 {
         color: $light;
         font-size: 5em;
         line-height: .8em;
-        @include text-shadow($dark 0 0 20px);
+        //@include text-shadow($dark 0 0 20px);
         text-align: center;
-        padding: 0 10px;
+        //padding: 0 10px 0 220px;
       }//h1
       h2 {
-        width: 70%;
+        padding-top: 40px;
+        font-size: 1.1em;
+        /* width: 70%;
         max-width: 230px;
-        margin: 0 auto;
+        margin: 0 auto; */
         text-align: center;
-        color: rgba($light, 0.75);
-        font-weight: $normal;
-        background: rgba($purple, 0.5);
-        border: 1px solid rgba($purple, 0.8);
+        color: $dark;
+        /* font-weight: \$normal;
+        background: rgba(\$purple, 0.5);
+        border: 1px solid rgba(\$purple, 0.8);
         margin-top: 12px;
-        font-size: 1.2em;
+        font-size: 1.2em; */
       }//h2
       p {
         text-align: center;
         img {
-          padding-top: 50px;
+          padding-top: 20px;
           max-width: 50px;
         } //img
       }//p
