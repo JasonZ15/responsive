@@ -2,7 +2,8 @@
   @include clearfix;
   @include container(100%);
   padding: 0;
-  @include backImage('../images/hotel/attractions.jpg');
+  @include backImage('../images/hotel/3d.jpg');
+  background-position-y: top;
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);
