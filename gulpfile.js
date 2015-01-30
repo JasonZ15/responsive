@@ -43,6 +43,14 @@ gulp.task('js', function() {
     .pipe(connect.reload())
 });
 
+gulp.task('vendor', function() {
+  gulp.src(['components/vendor/three/*.js',
+            'components/vendor/pace/*.js'])
+    .pipe(gulp.dest(outputDir + 'js'));
+  gulp.src(['components/vendor/pace/*.css'])
+    .pipe(gulp.dest(outputDir + 'css'));
+});
+
 gulp.task('compass', function() {
   gulp.src(sassSources)
     .pipe(compass({
@@ -84,4 +92,4 @@ gulp.task('move', function() {
   .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')))
 });
 
-gulp.task('default', ['watch', 'html', 'js', 'compass', 'move', 'connect']);
+gulp.task('default', ['watch', 'html', 'js', 'vendor', 'compass', 'move', 'connect']);
