@@ -6,6 +6,7 @@ builds/**/images/*
 builds/development/components
 builds/development/css/*
 builds/development/js/*
+builds/production/*
 .project
 npm-debug.log
 
