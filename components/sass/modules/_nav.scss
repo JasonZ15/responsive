@@ -1,6 +1,9 @@
 header #nav {
   @include clearfix;
   @include background-image(linear-gradient(top, lighten($purple, 10%), rgba($purple, 0.8)));
+  &.the-end {
+    @include background-image(linear-gradient(top, lighten($purple, 10%), rgba($purple, 1)));
+  }
   width: 100%;
   z-index: 100;
 

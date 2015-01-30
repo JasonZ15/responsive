@@ -29,6 +29,11 @@ $(function() {
     } else {
       $('.brand').removeClass('inactive');
     }
+    if (windowpos > ($('#socialmedia').offset().top - 1)) {
+      $('#nav').addClass('the-end');
+    } else {
+      $('#nav').removeClass('the-end');
+    }
   });
 
   // smooth scroll
