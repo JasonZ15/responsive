@@ -26,11 +26,10 @@ if (env==='development') {
 }
 
 jsSources = [
-  'components/scripts/jquery.min.js',
-  'components/scripts/TweenMax.min.js',
-  'components/scripts/jquery.scrollmagic.min.js',
-  'components/scripts/script.js',
-  'components/scripts/script_maze.js'
+  'components/vendor/jquery/jquery.min.js',
+  'components/vendor/tween/TweenMax.min.js',
+  'components/vendor/tween/jquery.scrollmagic.min.js',
+  'components/scripts/script.js'
 ];
 sassSources = ['components/sass/style.scss'];
 htmlSources = [outputDir + '*.html'];
