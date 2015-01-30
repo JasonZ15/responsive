@@ -142,7 +142,7 @@ $(function() {
   webdevScene.addTo(controller)
   .triggerHook("onEnter")
   .setTween(new TimelineMax().add([
-    TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px", ease: Linear.easeNone})
+    TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px, 1100px", ease: Linear.easeNone})
     ]));
 
   var quoteScene = new ScrollScene({
