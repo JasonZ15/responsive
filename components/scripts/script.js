@@ -34,6 +34,11 @@ $(function() {
     } else {
       $('.brand').removeClass('resume');
     }
+    if ($(window).scrollTop() === 0) {
+      $('.brand').addClass('inactive');
+    } else if (windowpos < $('#hotelinfo').offset().top) {
+      $('.brand').removeClass('inactive');
+    }
     if (windowpos > ($('#contact').offset().top - 1)) {
       $('#nav').addClass('the-end');
     } else {
