@@ -1,6 +1,9 @@
 footer {
   @include container(100%);
-  background: lighten($dark, 20);
+  @include background-image(url('../images/hotel/jz_bye.jpg'));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #68546d;
   padding: 30px 0;
 
   #socialmedia {
@@ -15,6 +18,40 @@ footer {
           @include border-radius(50%);
         }
       }
+    }
+  }
+
+  #bye {
+    width:100%;
+    height:90%;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    @include background-image(url('../images/hotel/logo_bottom.png'));
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
+    h1 {
+      padding-bottom: 130px;
+      font-size: 2.8em;
+      a {
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+        -webkit-transition: color 0.35s;
+        transition: color 0.35s;
+        &:hover {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+
+  #copyright {
+    p {
+      text-align: center;
+      color: #262028;
+      font-weight: bold;
+      font-size: 0.9em;
     }
   }
 }
