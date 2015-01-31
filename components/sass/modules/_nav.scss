@@ -11,10 +11,13 @@ header #nav {
     @include container;
     .brand {
       @include span(3 of 12);
-      float: left;
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(center);
+
       font-weight: $bold;
       text-align: center;
-      text-transform: uppercase;
+      //text-transform: uppercase;
       background: $orange;
       -webkit-transition: background-color 0.35s, color 0.35s;
       transition: background-color 0.35s, color 0.35s;
@@ -38,8 +41,8 @@ header #nav {
         text-decoration: none;
         text-align: center;
         display: inline-block;
-        padding: 8px;
-
+        width: 100%;
+        padding: 7px 8px 8px 8px;
         span.small {
           display: none;
         }
