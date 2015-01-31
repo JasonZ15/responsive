@@ -27,7 +27,7 @@ header #nav {
       background-position: 34px top;
       background-size: 52px;
       @include breakpoint (0 $small) {
-        background-position: 24px top;
+        background-position: center top;
       }
 
       &.resume {
