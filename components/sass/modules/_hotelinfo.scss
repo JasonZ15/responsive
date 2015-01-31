@@ -6,6 +6,9 @@
                       linear-gradient(top, $taupe, $purple));
   background-repeat: repeat-y;
   background-position: -228px -200px, 124% -300px, 0px 0px;
+  @include breakpoint(0px $small) {
+    background-position: -188px -200px, 1200px -300px, 0px 0px;
+  }
 
   #{headings()} {
    color: $light;
