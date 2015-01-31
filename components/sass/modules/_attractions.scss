@@ -7,6 +7,11 @@
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);
+
+  @include breakpoint (0 $small) {
+    background-position-x: 5%;
+  }//breakpoint
+
   article {
     @include container(80%);
     @include breakpoint($medium) {
