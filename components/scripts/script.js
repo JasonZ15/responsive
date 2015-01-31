@@ -165,7 +165,8 @@ $(function() {
   brandScene.addTo(controller)
   .triggerHook("onLeave")
   .setTween(new TimelineMax().add([
-    TweenMax.fromTo(".brand", 1, {backgroundPositionY: "-80px"}, {backgroundPositionY: "0px", ease: Elastic.easeInOut})
+    TweenMax.fromTo(".brand", 1, {backgroundPositionY: "-80px"}, {backgroundPositionY: "0px", ease: Elastic.easeInOut}),
+    TweenMax.to(".brand a .small", 1, {opacity: "0", ease: Linear.easeNone})
     ]));
 
   $(window).resize(function() {
