@@ -29,6 +29,11 @@ $(function() {
     } else {
       $('.brand').removeClass('inactive');
     }
+    if (windowpos > ($('#hotelinfo').offset().top - 1) && windowpos < ($('#rooms').offset().top)) {
+      $('.brand').addClass('resume');
+    } else {
+      $('.brand').removeClass('resume');
+    }
     if (windowpos > ($('#contact').offset().top - 1)) {
       $('#nav').addClass('the-end');
     } else {

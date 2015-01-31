@@ -30,6 +30,9 @@ header #nav {
         background-position: 24px top;
       }
 
+      &.resume {
+        background-color: $taupe;
+      }
       &.inactive {
         background-color: transparent;
       }
