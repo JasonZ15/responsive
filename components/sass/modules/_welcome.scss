@@ -13,16 +13,28 @@
       @include container(80%);
       padding: 30px 0;
     }
+
+    p {
+      @include breakpoint(0 $small) {
+        padding-top: 8px;
+      }
+    }
   }//article
 
   h1 {
     color: $dark;
     font-weight: $normal;
     font-size: 2em;
+    @include breakpoint(0 $small) {
+      font-size: 1.4em;
+    }
   }//h1
 
   p {
     color: $dark;
+    @include breakpoint(0 $small) {
+      line-height: 1.4em;
+    }
   }
 
   .gallery {
