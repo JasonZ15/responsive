@@ -129,11 +129,11 @@ $(function() {
 
   var welcomeScene = new ScrollScene({
     triggerElement: "#welcome",
-    duration: $('#welcome').height(),
+    duration: $('#intro').height() - topoffset,
     offset: 0
   });
   welcomeScene.addTo(controller)
-  .triggerHook("onCenter")
+  .triggerHook("onEnter")
   .setTween(new TimelineMax().add([
     TweenMax.fromTo("#welcome", 1, {backgroundPositionY: "400px, 0px"}, {backgroundPositionY: "56px, 0px", ease: Linear.easeNone})
     ]));
@@ -180,6 +180,7 @@ $(function() {
     ]));
 
   $(window).resize(function() {
+    welcomeScene.duration($('#intro').height() - topoffset);
     resumeScene.duration($('#hotelinfo').height() + $(window).height());
     headerScene.duration($(window).height());
     webdevScene.duration($('#hotelinfo').height() + $(window).height());
