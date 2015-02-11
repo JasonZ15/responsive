@@ -32,6 +32,7 @@
           @include span(1 of 2);
         }
       }
+      padding-bottom: 16px;
 
       h2 {
         color: lighten($taupe, 25);
@@ -55,13 +56,20 @@
       }//ul
     }//section
     section#arrivalinfo {
-      ul {
+      > ul {
         margin: 0;
-        li {
+        > li {
           list-style: none;
           border-top: 1px solid rgba($light, 0.4);
           padding: 15px 0;
           margin-left: 0;
+          ul {
+            padding-top: 6px;
+            clear: both;
+            li {
+              padding-bottom: 4px;
+            }
+          }
           a {
             display: block;
             font-weight: bold;
@@ -92,11 +100,17 @@
       }
     }//section#services
     section#accessibility {
-      padding-top: 16px;
       ul {
         padding-top: 8px;
         li {
           display: inline-block;
+        }
+      }
+    }
+    section#expertise {
+      ul {
+        li {
+          padding-bottom: 4px;
         }
       }
     }
@@ -118,6 +132,10 @@
 
     h2 {
       font-size: 1.2em;
+    }
+    p {
+      line-height: 115%;
+      padding-bottom: 6px;
     }
   }
 }
