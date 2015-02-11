@@ -38,7 +38,7 @@ header #nav {
       &.inactive {
         background-color: transparent;
       }
-      &.inactive:hover {
+      &.inactive.no-touch:hover {
         background-color: darken($purple, 8%);
       }
       a {
@@ -98,7 +98,7 @@ header #nav {
 
           -webkit-transition: background-color 0.35s, color 0.35s;
           transition: background-color 0.35s, color 0.35s;
-          &:hover {
+          &.no-touch:hover {
             background-color: darken($purple, 8%);
             color: $light;
           }//:hover
