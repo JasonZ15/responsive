@@ -50,7 +50,8 @@
   }//breakpoint
 
   #roomservice {
-    margin-top: 20px;
+    margin-top: 34px;
+    padding-bottom: 12px;
     //@include background-image(linear-gradient(top, $light, lighten($orange, 30)));
     @include pad(1,1);
     text-align: center;
