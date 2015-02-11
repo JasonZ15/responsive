@@ -1,5 +1,7 @@
 $(function() {
 
+  var isTouch = 'ontouchstart' in document.documentElement;
+
   // fullheight and window size
   var topoffset = $('.navbar ul').height();
   $('.navbar .brand').css('height', topoffset);
@@ -72,35 +74,37 @@ $(function() {
     triggerElement: '#nav',
   }).setPin('#nav').addTo(controller);
 
-  //animation for room content
-  var roomOrigin = {
-    bottom: -700,
-    opacity: 0,
-    scale: 0
-  };
+  if(!isTouch) {
+    //animation for room content
+    var roomOrigin = {
+      bottom: -700,
+      opacity: 0,
+      scale: 0
+    };
 
-  var roomDest = {
-    repeat: 1,
-    yoyo: true,
-    bottom: 0,
-    opacity: 1,
-    scale: 1,
-    ease: Back.easeOut
-  };
+    var roomDest = {
+      repeat: 1,
+      yoyo: true,
+      bottom: 0,
+      opacity: 1,
+      scale: 1,
+      ease: Back.easeOut
+    };
 
-  $('#rooms .room-group').each(function() {
-    var articleId = '#' + $(this).attr('id');
+    $('#rooms .room-group').each(function() {
+      var articleId = '#' + $(this).attr('id');
 
-    var roomstween = TweenMax.staggerFromTo(
-      articleId + ' ' + '.content', 1, roomOrigin, roomDest
-    );
+      var roomstween = TweenMax.staggerFromTo(
+        articleId + ' ' + '.content', 1, roomOrigin, roomDest
+      );
 
-    var roomsScene = new ScrollScene({
-      triggerElement: articleId,
-      offset: -topoffset,
-      duration: 500
-    }).setPin(articleId).setTween(roomstween).addTo(controller);
-  });
+      var roomsScene = new ScrollScene({
+        triggerElement: articleId,
+        offset: -topoffset,
+        duration: 500
+      }).setPin(articleId).setTween(roomstween).addTo(controller);
+    });
+  }//isTouch check
 
   //pops in text content for attractions section
   var attractionstween = TweenMax.staggerFromTo(
@@ -179,10 +183,14 @@ $(function() {
     TweenMax.to(".brand a .small", 1, {opacity: "0", ease: Linear.easeNone})
     ]));
 
-  $(window).resize(function() {
-    welcomeScene.duration($('#intro').height() - topoffset);
-    resumeScene.duration($('#hotelinfo').height() + $(window).height());
-    headerScene.duration($(window).height());
-    webdevScene.duration($('#hotelinfo').height() + $(window).height());
-  });
+  if(!isTouch) {
+    $(window).resize(function() {
+      welcomeScene.duration($('#intro').height() - topoffset);
+      resumeScene.duration($('#hotelinfo').height() + $(window).height());
+      headerScene.duration($(window).height());
+      webdevScene.duration($('#hotelinfo').height() + $(window).height());
+    });
+    $('#nav ul li a').addClass('no-touch');
+    $('.brand').addClass('no-touch');
+  }//isTouch check
 });
