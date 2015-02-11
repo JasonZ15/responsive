@@ -6,11 +6,13 @@
     position: relative; // for the text content
     @include container(100%);
     @include breakpoint($small) {
-      @include span(6 of 12 0);
+      @include span(4 of 12 0);
     }
 
     .content {
       position: absolute;
+      width: 100%;
+      text-align: center;
       bottom: 0;
       background: rgba($dark, 0.7);
       padding: 30px;
@@ -24,12 +26,16 @@
     }
   }
 
+  #storyboard {
+    @include backImage('../images/hotel/storyboard.jpg');
+  }
+
   #businessmeetings {
-    @include backImage('../images/hotel/user_analysis.jpg', to right, 0, 0, 65% top);
+    @include backImage('../images/hotel/user_analysis.jpg');
   }
 
   #weddings {
-    @include backImage('../images/hotel/app.jpg', to left, 0, 0, 4% top);
+    @include backImage('../images/hotel/app.jpg');
   }
 
 }
