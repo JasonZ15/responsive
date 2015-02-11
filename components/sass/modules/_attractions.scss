@@ -22,5 +22,7 @@
     margin-bottom: 200px;
     background: rgba($light, 0.8);
     @include border-radius(10px);
+
+    a {color: lighten($purple, 10%);}
   }
 }

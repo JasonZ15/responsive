@@ -10,6 +10,8 @@
     padding: 10px 0;
   }//headings
 
+  a { color: $orange; font-weight: bold; }
+
   img{
     width: 100%;
     @include border-radius(10px);
