@@ -80,15 +80,21 @@ header #nav {
           //&.events { background-image: url('../images/icons/events.png');}
           //&.attractions { background-image: url('../images/icons/attractions.png');}
 
-          @include breakpoint(0 $small) {
+          @include breakpoint(0 $narrow) {
+            padding: 10px 12px;
+          }
+          @include breakpoint($narrow $small) {
             padding: 10px 18px;
+          }
+          @include breakpoint(0 $small) {
             //&::after {
               //content: '\000a0';//css for nothing
               //display: block;
             //}
-            span {display: none;
+            span {
+              display: none;
             }//span
-          }//breakpoint
+          }
 
           @include breakpoint($small $medium) {
             padding-left: 10px;
