@@ -8,11 +8,10 @@ $(function() {
 
   var wheight = $(window).height() - topoffset;
   $('.fullheight').css('height', wheight);
-  $('header .fullheight').css('height', wheight + 300);
+
   $(window).resize(function() {
     var wheight = $(window).height() - topoffset;
     $('.fullheight').css('height', wheight);
-    $('header .fullheight').css('height', wheight + 300);
   });
 
   // current nav item active
@@ -128,7 +127,7 @@ $(function() {
   headerScene.addTo(controller)
   .triggerHook("onLeave")
   .setTween(new TimelineMax().add([
-    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "-300px", ease: Linear.easeNone})
+    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "300px", ease: Linear.easeNone})
     ]));
 
   var welcomeScene = new ScrollScene({
