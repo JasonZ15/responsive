@@ -40,11 +40,19 @@ gulp.task('js', function() {
     .on('error', gutil.log)
     .pipe(gulpif(env === 'production', uglify()))
     .pipe(gulp.dest(outputDir + 'js'))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
+
+  gulp.src(['components/scripts/script_maze.js'])
+    .pipe(concat('script_maze.js'))
+    .on('error', gutil.log)
+    .pipe(gulpif(env === 'production', uglify()))
+    .pipe(gulp.dest(outputDir + 'js'))
+    .pipe(connect.reload());
 });
 
 gulp.task('vendor', function() {
-  gulp.src(['components/vendor/three/*.js',
+  gulp.src(['components/vendor/jquery/*.js',
+            'components/vendor/three/*.js',
             'components/vendor/pace/*.js'])
     .pipe(gulp.dest(outputDir + 'js'));
   gulp.src(['components/vendor/pace/*.css'])
@@ -89,7 +97,9 @@ gulp.task('html', function() {
 // Copy images to production
 gulp.task('move', function() {
   gulp.src('builds/development/images/**/*.*')
-  .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')))
+  .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')));
+  gulp.src('builds/development/*.ico')
+  .pipe(gulpif(env === 'production', gulp.dest(outputDir)));
 });
 
 gulp.task('default', ['watch', 'html', 'js', 'vendor', 'compass', 'move', 'connect']);
