@@ -21,7 +21,7 @@ if (env==='development') {
   outputDir = 'builds/development/';
   sassStyle = 'expanded';
 } else {
-  outputDir = 'builds/production/';
+  outputDir = 'builds/jasonz15.github.io/';
   sassStyle = 'compressed';
 }
 

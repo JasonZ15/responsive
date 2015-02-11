@@ -7,6 +7,7 @@ builds/development/components
 builds/development/css/*
 builds/development/js/*
 builds/production/*
+builds/jasonz15.github.io
 .project
 npm-debug.log
 
