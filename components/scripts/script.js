@@ -169,7 +169,7 @@ $(function() {
   quoteScene.addTo(controller)
   .triggerHook("onCenter")
   .setTween(new TimelineMax().add([
-    TweenMax.fromTo("#rooms", 1, {backgroundPositionX: "100px"}, {backgroundPositionX: "1000px", ease: Expo.easeInOut})
+    TweenMax.fromTo("#rooms", 1, {backgroundPositionX: "100px"}, {backgroundPositionX: "1590px", ease: Expo.easeInOut})
     ]));
 
   var brandScene = new ScrollScene({
