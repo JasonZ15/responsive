@@ -10,7 +10,7 @@
     @include container(75%);
     @include breakpoint($medium) {
       @include container(50em);
-      @include pad(1,1);
+      @include pad(0.6,0.6);
     }//breakpoint
     @include breakpoint(0 $small) {
       @include container(90%);
