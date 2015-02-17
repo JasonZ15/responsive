@@ -3,13 +3,13 @@
   @include container(100%);
   padding: 0;
   @include backImage('../images/hotel/3d.jpg');
-  background-position-y: top;
+  background-position: center top;
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);
 
   @include breakpoint (0 $small) {
-    background-position-x: 5%;
+    background-position: 5% top;
   }//breakpoint
 
   article {

@@ -35,14 +35,14 @@
 
   #piccadilly { @include backImage('../images/hotel/rooms_piccadilly.jpg');}
   #cambridge {
-    @include backImage('../images/hotel/rooms_cambridge.jpg'); background-position-y: top;
+    @include backImage('../images/hotel/rooms_cambridge.jpg'); background-position: center top;
     .room {
       @include breakpoint($small) {
         @include pad(1,7);
       }//breakpoint
     }
   }
-  #westminster {@include backImage('../images/hotel/thegmic.jpg'); background-position-y: top;}
+  #westminster {@include backImage('../images/hotel/thegmic.jpg'); background-position: center top;}
   #oxford {@include backImage('../images/hotel/rooms_oxford.jpg');}
   #victoria {@include backImage('../images/hotel/rooms_victoria.jpg');}
   #manchester {@include backImage('../images/hotel/rooms_manchester.jpg');}
