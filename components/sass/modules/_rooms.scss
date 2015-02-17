@@ -7,10 +7,13 @@
   header {
     margin-bottom: 60px;
     padding-top: 12px;
-    @include container(90%);
+    @include container(75%);
     @include breakpoint($medium) {
-      @include container;
+      @include container(50em);
       @include pad(1,1);
+    }//breakpoint
+    @include breakpoint(0 $small) {
+      @include container(90%);
     }//breakpoint
 
     h1 {
