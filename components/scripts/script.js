@@ -103,6 +103,23 @@ $(function() {
         duration: 500
       }).setPin(articleId).setTween(roomstween).addTo(controller);
     });
+  } else {
+    //pops in text content for rooms section for touch devices
+    $('#rooms .room-group').each(function() {
+      var articleId = '#' + $(this).attr('id');
+
+      var roomstween = TweenMax.staggerFromTo(
+        articleId + ' ' + '.content',
+        1,
+        {opacity: 0, scale: 0},
+        {delay: 0.1, opacity: 1, scale: 1, ease: Back.easeOut}
+      );
+
+      var roomsScene = new ScrollScene({
+        triggerElement: articleId,
+        offset: -topoffset
+      }).setTween(roomstween).addTo(controller);
+    });
   }//isTouch check
 
   //pops in text content for attractions section
