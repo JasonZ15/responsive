@@ -30,10 +30,12 @@ footer {
     @include background-image(url('../images/hotel/logo_bottom.png'));
     background-repeat: no-repeat;
     background-position: center bottom;
+    body.ieUnder11 & {padding: 200px 0 200px 0;}
 
     h1 {
       padding-bottom: 130px;
       font-size: 2.8em;
+      text-align: center;
       a {
         color: rgba(255, 255, 255, 1);
         text-decoration: none;
