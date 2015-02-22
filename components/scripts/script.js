@@ -73,6 +73,25 @@ $(function() {
     triggerElement: '#nav',
   }).setPin('#nav').addTo(controller);
 
+  navigator.sayswho= (function(){
+      var ua= navigator.userAgent, tem,
+      M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+      if(/trident/i.test(M[1])){
+          tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+          return 'IE '+(tem[1] || '');
+      }
+      if(M[1]=== 'Chrome'){
+          tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+          if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+      }
+      M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+      if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+      if (M[0] == 'MSIE' && (M[1] < 11)) {
+        $("body").addClass("ieUnder11");
+      };
+      return M;
+  })();//browser check ie
+
   if(!isTouch) {
     //animation for room content
     var roomOrigin = {
