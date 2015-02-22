@@ -62,12 +62,16 @@
       @include pad(7,1);
     }//breakpoint
 
+    height: 100%;
+    body.ieUnder11 & {
+      padding-top:200px; //for older than IE 10
+      padding-bottom:200px;
+    }
+
     .content {
       @include border-radius(10px);
       background: rgba($light, 0.8);
       padding: 20px;
-      margin-top: 200px; //for older than IE 10
-      margin-bottom: 200px;
 
       h1, a {
         color:$red;
