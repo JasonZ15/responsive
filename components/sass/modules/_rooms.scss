@@ -1,5 +1,5 @@
 #rooms {
-  @include background(image-url('../images/hotel/graphic_design.jpg'));
+  @include background(url('../images/hotel/graphic_design.jpg'));
   background-repeat: repeat-x;
   background-position: right -100% top 120px;
   padding-bottom:0;

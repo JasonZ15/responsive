@@ -1,5 +1,5 @@
 #welcome {
-  @include background(image-url('../images/hotel/about_me.png'),
+  @include background(url('../images/hotel/about_me.png'),
                       linear-gradient(top, $orange, $red ));
   background-repeat: no-repeat;
   background-position: center 240px, 0px 0px;

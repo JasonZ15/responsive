@@ -1,8 +1,8 @@
 #hotelinfo {
   color: $light;
   @include clearfix;
-  @include background(image-url('../images/hotel/molecule.png'),
-                      image-url('../images/hotel/molecule.png'),
+  @include background(url('../images/hotel/molecule.png'),
+                      url('../images/hotel/molecule.png'),
                       linear-gradient(top, $taupe, $purple));
   background-repeat: repeat-y;
   background-position: -228px -200px, 124% -300px, 0px 0px;
