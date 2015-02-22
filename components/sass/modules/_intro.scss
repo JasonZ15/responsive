@@ -6,6 +6,7 @@ header {
     @include display-flex();
     @include align-items(center);
     @include justify-content(center);
+    body.ieUnder11 & {padding-top: 180px;}
 
     .hgroup {
       padding: 174px 0 100px 0;
