@@ -1,5 +1,16 @@
 @mixin backImage(
   $image,
+  $bgPos: center center
+  ) {
+  background: url($image) no-repeat $bgPos;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}//backImage
+
+@mixin backGradientImage(
+  $image,
   $grDir: to bottom,
   $opStart: 0,
   $opEnd: 0,
@@ -14,7 +25,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}//backImage
+}//backGradientImage only works with IE 10+
 
 @mixin clearfix {
   &:before,
