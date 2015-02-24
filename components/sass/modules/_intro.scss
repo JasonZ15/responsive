@@ -8,6 +8,8 @@ header {
     @include justify-content(center);
     body.ieUnder11 & {padding-top: 180px;}
 
+    overflow: hidden;
+
     .hgroup {
       padding: 174px 0 100px 0;
       @include background-image(url('../images/hotel/logo_top.png'));

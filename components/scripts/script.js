@@ -93,6 +93,7 @@ $(function() {
   })();//browser check ie
 
   if(!isTouch) {
+    $("body").addClass("noTouch");
     //animation for room content
     var roomOrigin = {
       bottom: -700,
@@ -163,7 +164,8 @@ $(function() {
   headerScene.addTo(controller)
   .triggerHook("onLeave")
   .setTween(new TimelineMax().add([
-    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "300px", ease: Linear.easeNone})
+    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "300px", ease: Linear.easeNone}),
+    TweenMax.fromTo(".noTouch header .fullheight h1", 1, {letterSpacing: "0px"}, {letterSpacing: "30px", autoRound:false, ease: Linear.easeNone})
     ]));
 
   var welcomeScene = new ScrollScene({
