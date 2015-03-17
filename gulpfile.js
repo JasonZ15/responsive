@@ -13,16 +13,19 @@ var env,
     sassSources,
     htmlSources,
     outputDir,
-    sassStyle;
+    sassStyle,
+    cssMap;
 
 env = 'development';
 
 if (env==='development') {
   outputDir = 'builds/development/';
   sassStyle = 'expanded';
+  cssMap = true;
 } else {
   outputDir = 'builds/jasonz15.github.io/';
   sassStyle = 'compressed';
+  cssMap = false;
 }
 
 jsSources = [
@@ -62,7 +65,7 @@ gulp.task('vendor', function() {
 gulp.task('compass', function() {
   gulp.src(sassSources)
     .pipe(compass({
-      sourcemap: true,
+      sourcemap: cssMap,
       sass: 'components/sass',
       css: outputDir + 'css',
       image: outputDir + 'images',
