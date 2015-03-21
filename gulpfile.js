@@ -5,8 +5,11 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
     minifyHTML = require('gulp-minify-html'),
-    concat = require('gulp-concat');
-    path = require('path');
+    concat = require('gulp-concat'),
+    path = require('path'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    ngrok = require('ngrok');
 
 var env,
     jsSources,
@@ -100,9 +103,23 @@ gulp.task('html', function() {
 // Copy images to production
 gulp.task('move', function() {
   gulp.src('builds/development/images/**/*.*')
+  .pipe(gulpif(env === 'production', imagemin({
+    progressive: true,
+    svgoPlugins: [{removeViewBox: false}],
+    use: [pngquant()]
+  })))
   .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')));
   gulp.src('builds/development/*.ico')
   .pipe(gulpif(env === 'production', gulp.dest(outputDir)));
 });
 
-gulp.task('default', ['watch', 'html', 'js', 'vendor', 'compass', 'move', 'connect']);
+//create ngrok url for testing
+gulp.task('ngrok-url', function(cb) {
+ return ngrok.connect(8080, function (err, url) {
+  site = url;
+  console.log('serving your tunnel from: ' + site);
+  cb();
+ });
+});
+
+gulp.task('default', ['watch', 'html', 'js', 'vendor', 'compass', 'move', 'connect', 'ngrok-url']);
