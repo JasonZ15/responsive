@@ -1,8 +1,7 @@
 #welcome {
-  @include background(url('../images/hotel/about_me.png'),
-                      linear-gradient(top, $orange, $red ));
-  background-repeat: no-repeat;
-  background-position: center 240px, 0px 0px;
+  @include background(linear-gradient(top, $orange, $red ));
+  position: relative;
+  z-index: 0;
 
   article {
     text-align: center;
@@ -71,5 +70,20 @@
         &.hidesm {display: none;}
       }
     }
+  }
+  .image-animate {
+    @include background(url('../images/hotel/about_me.png'));
+    background-repeat: no-repeat;
+    background-position: center top;
+
+    width: 752px;
+    height: 439px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
   }
 }//welcome

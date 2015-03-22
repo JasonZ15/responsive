@@ -164,8 +164,8 @@ $(function() {
   headerScene.addTo(controller)
   .triggerHook("onLeave")
   .setTween(new TimelineMax().add([
-    TweenMax.to("header .fullheight", 1, {backgroundPositionY: "300px", autoRound:false, ease: Linear.easeNone}),
-    TweenMax.fromTo(".noTouch header .fullheight h1", 1, {letterSpacing: "0px"}, {letterSpacing: "30px", autoRound:false, ease: Linear.easeNone})
+    TweenMax.to("header .image-animate", 1, {y: 80, force3D:true, ease: Linear.easeNone}),
+    TweenMax.fromTo(".noTouch header .hgroup h1", 1, {letterSpacing: "0px"}, {letterSpacing: "30px", autoRound:false, ease: Linear.easeNone})
     ]));
 
   var welcomeScene = new ScrollScene({
@@ -176,7 +176,7 @@ $(function() {
   welcomeScene.addTo(controller)
   .triggerHook("onEnter")
   .setTween(new TimelineMax().add([
-    TweenMax.fromTo("#welcome", 1, {backgroundPositionY: "400px, 0px"}, {backgroundPositionY: "56px, 0px", ease: Linear.easeNone})
+    TweenMax.to("#welcome .image-animate", 1, {y: 80, ease: Linear.easeNone})
     ]));
 
   var resumeScene = new ScrollScene({
