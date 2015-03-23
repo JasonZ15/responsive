@@ -185,6 +185,7 @@ $(function() {
 
     function onScroll (evt) {
       lastScrollY = win.pageYOffset;
+      init = false;
       if(!ticking) {
         ticking = true;
         requestAnimationFrame(updateElements);
@@ -194,23 +195,23 @@ $(function() {
     function updateElements () {
       var relativeY = lastScrollY / docHeight;
 
-      if ((lastScrollY <= anim1Duration)) {
+      if ((lastScrollY <= anim1Duration) || init) {
         prefix(anim1.style, "Transform", "translate3d(0, " + pos(0, 800, relativeY, 0) + "px, 0)");
         anim2.style["letterSpacing"] = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
       }
 
-      if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration)) {
+      if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration) || init) {
         prefix(anim3.style,
                "Transform",
                "translateY("
                 + pos(0,
                       -6200,
-                      relativeY,
+                      Math.min(relativeY, (anim1Duration / docHeight)),
                       (anim1Duration / 2 / docHeight))
                 + "px");
       }
 
-      if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration))) {
+      if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration)) || init) {
         prefix(anim4Left.style,
                "Transform",
                "translate3d(0, "
@@ -249,6 +250,9 @@ $(function() {
 
     win.addEventListener('resize', onResize, false);
     win.addEventListener('scroll', onScroll, false);
+
+    var init = true;
+    updateElements();
 
   })(window, document);
 
