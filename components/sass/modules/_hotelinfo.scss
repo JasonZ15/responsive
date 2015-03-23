@@ -1,14 +1,11 @@
 #hotelinfo {
   color: $light;
   @include clearfix;
-  @include background(url('../images/hotel/molecule.png'),
-                      url('../images/hotel/molecule.png'),
-                      linear-gradient(top, $taupe, $purple));
-  background-repeat: repeat-y;
-  background-position: -228px -200px, 124% -300px, 0px 0px;
-  @include breakpoint(0px $small) {
-    background-position: -188px -200px, 1200px -300px, 0px 0px;
-  }
+  @include background(linear-gradient(top, $taupe, $purple));
+  background-position: 0px 0px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 
   #{headings()} {
    color: $light;
@@ -136,6 +133,27 @@
     p {
       line-height: 115%;
       padding-bottom: 6px;
+    }
+  }
+  .image-animate {
+    @include background(url('../images/hotel/molecule.png'));
+    background-repeat: repeat-y;
+    background-position: center top;
+
+    width: 499px;
+    height: 150%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    &.left {
+      left: -100px;
+    }
+    &.right {
+      right: -100px;
+    }
+    @include breakpoint(0px $small) {
+
     }
   }
 }

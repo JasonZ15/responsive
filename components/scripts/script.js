@@ -156,39 +156,101 @@ $(function() {
   }).setTween(attractionstween).addTo(controller);
 
   // parallax
-  var headerScene = new ScrollScene({
-    triggerElement: "header",
-    duration: $(window).height(),
-    offset: 0
-  });
-  headerScene.addTo(controller)
-  .triggerHook("onLeave")
-  .setTween(new TimelineMax().add([
-    TweenMax.to("header .image-animate", 1, {y: 80, force3D:true, ease: Linear.easeNone}),
-    TweenMax.fromTo(".noTouch header .hgroup h1", 1, {letterSpacing: "0px"}, {letterSpacing: "30px", autoRound:false, ease: Linear.easeNone})
-    ]));
+  (function(win, d) {
 
-  var welcomeScene = new ScrollScene({
-    triggerElement: "#welcome",
-    duration: $('#intro').height() - topoffset,
-    offset: 0
-  });
-  welcomeScene.addTo(controller)
-  .triggerHook("onEnter")
-  .setTween(new TimelineMax().add([
-    TweenMax.to("#welcome .image-animate", 1, {y: 80, ease: Linear.easeNone})
-    ]));
+    var $ = d.querySelector.bind(d);
 
-  var resumeScene = new ScrollScene({
-    triggerElement: "#hotelinfo",
-    duration: $('#hotelinfo').height() + $(window).height(),
-    offset: 0
-  });
-  resumeScene.addTo(controller)
-  .triggerHook("onEnter")
-  .setTween(new TimelineMax().add([
-    TweenMax.to("#hotelinfo", 1, {backgroundPositionY: "-500px, -900px, 0", ease: Linear.easeNone})
-    ]));
+    var anim1 = $('#intro .image-animate'),
+        anim1Duration = $('#intro article.fullheight').offsetHeight;
+
+    var anim2 = $('#intro .hgroup h1');
+
+    var anim3 = $('#welcome .image-animate');
+
+    var anim4Container = $('#hotelinfo'),
+        anim4Left = $('#hotelinfo .image-animate.left'),
+        anim4Right = $('#hotelinfo .image-animate.right'),
+        anim4Duration = anim4Container.offsetHeight,
+        anim4Trigger = anim4Container.offsetTop;
+
+    var ticking = false;
+    var lastScrollY = win.pageYOffset,
+        docHeight = $('body').offsetHeight,
+        winHeight = win.innerHeight;
+
+    function onResize () {
+      //updateElements(win.pageYOffset); resize and scroll relations???
+      //need to update varibles
+    }
+
+    function onScroll (evt) {
+      lastScrollY = win.pageYOffset;
+      if(!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateElements);
+      }
+    }
+
+    function updateElements () {
+      var relativeY = lastScrollY / docHeight;
+
+      if ((lastScrollY <= anim1Duration)) {
+        prefix(anim1.style, "Transform", "translate3d(0, " + pos(0, 800, relativeY, 0) + "px, 0)");
+        anim2.style["letterSpacing"] = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
+      }
+
+      if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration)) {
+        prefix(anim3.style,
+               "Transform",
+               "translateY("
+                + pos(0,
+                      -6200,
+                      relativeY,
+                      (anim1Duration / 2 / docHeight))
+                + "px");
+      }
+
+      if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration))) {
+        prefix(anim4Left.style,
+               "Transform",
+               "translate3d(0, "
+                + pos(0,
+                      -1800,
+                      relativeY,
+                      ((anim4Trigger - winHeight) / docHeight))
+                + "px, 0");
+        prefix(anim4Right.style,
+               "Transform",
+               "translate3d(0, "
+                + pos(0,
+                      -2400,
+                      relativeY,
+                      ((anim4Trigger - winHeight) / docHeight))
+                + "px, 0");
+      }
+
+      ticking = false;
+    }
+
+    function pos(base, range, relY, offset) {
+      return base + limit(0, 1, relY - offset) * range;
+    }
+
+    function prefix(obj, prop, value) {
+      var prefs = ['webkit', 'Moz', 'o', 'ms'];
+      for (var pref in prefs) {
+        obj[prefs[pref] + prop] = value;
+      }
+    }
+
+    function limit(min, max, value) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    win.addEventListener('resize', onResize, false);
+    win.addEventListener('scroll', onScroll, false);
+
+  })(window, document);
 
   var webdevScene = new ScrollScene({
     triggerElement: "#dining",
