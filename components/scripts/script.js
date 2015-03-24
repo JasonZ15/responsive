@@ -15,37 +15,55 @@ $(function() {
   });
 
   // current nav item active
-  $(window).scroll(function() {
-    var windowpos = $(window).scrollTop() + topoffset;
-    $('.navbar > ul > li > a').removeClass('active');
-    $('.navbar > ul > li > a').each(function() {
-      var sectionId = $(this).attr('href');
-      if (windowpos > ($(sectionId).offset().top - 1)) {
-        $('.navbar > ul > li > a').removeClass('active');
-        $(this).addClass('active');
+  (function() {
+    var windowpos = window.pageYOffset + topoffset;
+    var lastScrollY = window.pageYOffset;
+    var ticking = false;
+
+    function onScroll () {
+      windowpos = window.pageYOffset + topoffset;
+      lastScrollY = window.pageYOffset;
+      if(!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateElements);
       }
-    });
-    if (windowpos > ($('#rooms').offset().top - 1)) {
-      $('.brand').addClass('inactive');
-    } else {
-      $('.brand').removeClass('inactive');
     }
-    if (windowpos > ($('#hotelinfo').offset().top - 1) && windowpos < ($('#rooms').offset().top)) {
-      $('.brand').addClass('resume');
-    } else {
-      $('.brand').removeClass('resume');
+
+    function updateElements () {
+      $('.navbar > ul > li > a').removeClass('active');
+      $('.navbar > ul > li > a').each(function() {
+        var sectionId = $(this).attr('href');
+        if (windowpos > ($(sectionId).offset().top - 1)) {
+          $('.navbar > ul > li > a').removeClass('active');
+          $(this).addClass('active');
+        }
+      });
+      if (windowpos > ($('#rooms').offset().top - 1)) {
+        $('.brand').addClass('inactive');
+      } else {
+        $('.brand').removeClass('inactive');
+      }
+      if (windowpos > ($('#hotelinfo').offset().top - 1) && windowpos < ($('#rooms').offset().top)) {
+        $('.brand').addClass('resume');
+      } else {
+        $('.brand').removeClass('resume');
+      }
+      if (lastScrollY === 0) {
+        $('.brand').addClass('inactive');
+      } else if (windowpos < $('#hotelinfo').offset().top) {
+        $('.brand').removeClass('inactive');
+      }
+      if (windowpos > ($('#contact').offset().top - 1)) {
+        $('#nav').addClass('the-end');
+      } else {
+        $('#nav').removeClass('the-end');
+      }
+
+      ticking = false;
     }
-    if ($(window).scrollTop() === 0) {
-      $('.brand').addClass('inactive');
-    } else if (windowpos < $('#hotelinfo').offset().top) {
-      $('.brand').removeClass('inactive');
-    }
-    if (windowpos > ($('#contact').offset().top - 1)) {
-      $('#nav').addClass('the-end');
-    } else {
-      $('#nav').removeClass('the-end');
-    }
-  });
+
+    window.addEventListener('scroll', onScroll, false);
+  })();
 
   // smooth scroll
   $('a[href*=#]:not([href=#])').click(function() {
