@@ -79,18 +79,6 @@ $(function() {
     }
   });
 
-  //set up ScrollMagic
-  var controller = new ScrollMagic({
-    globalSceneOptions: {
-      triggerHook: "onLeave"
-    }
-  });
-
-  //pin down navigation at the top
-  var navPin = new ScrollScene({
-    triggerElement: '#nav',
-  }).setPin('#nav').addTo(controller);
-
   navigator.sayswho= (function(){
       var ua= navigator.userAgent, tem,
       M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -109,69 +97,6 @@ $(function() {
       };
       return M;
   })();//browser check ie
-
-  if(!isTouch) {
-    $("body").addClass("noTouch");
-    //animation for room content
-    var roomOrigin = {
-      bottom: -700,
-      opacity: 0,
-      scale: 0
-    };
-
-    var roomDest = {
-      repeat: 1,
-      yoyo: true,
-      bottom: 0,
-      opacity: 1,
-      scale: 1,
-      ease: Back.easeOut
-    };
-
-    $('#rooms .room-group').each(function() {
-      var articleId = '#' + $(this).attr('id');
-
-      var roomstween = TweenMax.staggerFromTo(
-        articleId + ' ' + '.content', 1, roomOrigin, roomDest
-      );
-
-      var roomsScene = new ScrollScene({
-        triggerElement: articleId,
-        offset: -topoffset,
-        duration: 500
-      }).setPin(articleId).setTween(roomstween).addTo(controller);
-    });
-  } else {
-    //pops in text content for rooms section for touch devices
-    $('#rooms .room-group').each(function() {
-      var articleId = '#' + $(this).attr('id');
-
-      var roomstween = TweenMax.staggerFromTo(
-        articleId + ' ' + '.content',
-        1,
-        {opacity: 0, scale: 0},
-        {delay: 0.1, opacity: 1, scale: 1, ease: Back.easeOut}
-      );
-
-      var roomsScene = new ScrollScene({
-        triggerElement: articleId,
-        offset: -topoffset
-      }).setTween(roomstween).addTo(controller);
-    });
-  }//isTouch check
-
-  //pops in text content for attractions section
-  var attractionstween = TweenMax.staggerFromTo(
-    '#attractions article',
-    1,
-    {opacity: 0, scale: 0},
-    {delay: 0.3, opacity: 1, scale: 1, ease: Back.easeOut}
-  );
-
-  var attractionsScene = new ScrollScene({
-    triggerElement: '#attractions',
-    offset: -topoffset
-  }).setTween(attractionstween).addTo(controller);
 
   // parallax
   (function(win, d) {
@@ -274,6 +199,18 @@ $(function() {
 
   })(window, document);
 
+  //set up ScrollMagic
+  var controller = new ScrollMagic({
+    globalSceneOptions: {
+      triggerHook: "onLeave"
+    }
+  });
+
+  //pin down navigation at the top
+  var navPin = new ScrollScene({
+    triggerElement: '#nav',
+  }).setPin('#nav').addTo(controller);
+
   var webdevScene = new ScrollScene({
     triggerElement: "#dining",
     duration: $('#dining').height() + $(window).height(),
@@ -303,6 +240,69 @@ $(function() {
     TweenMax.fromTo(".brand", 1, {backgroundPositionY: "-80px"}, {backgroundPositionY: "0px", ease: Elastic.easeInOut}),
     TweenMax.to(".brand a .small", 1, {opacity: "0", ease: Linear.easeNone})
     ]));
+
+  //pops in text content for attractions section
+  var attractionstween = TweenMax.staggerFromTo(
+    '#attractions article',
+    1,
+    {opacity: 0, scale: 0},
+    {delay: 0.3, opacity: 1, scale: 1, ease: Back.easeOut}
+  );
+
+  var attractionsScene = new ScrollScene({
+    triggerElement: '#attractions',
+    offset: -topoffset
+  }).setTween(attractionstween).addTo(controller);
+
+  if(!isTouch) {
+    $("body").addClass("noTouch");
+    //animation for room content
+    var roomOrigin = {
+      bottom: -700,
+      opacity: 0,
+      scale: 0
+    };
+
+    var roomDest = {
+      repeat: 1,
+      yoyo: true,
+      bottom: 0,
+      opacity: 1,
+      scale: 1,
+      ease: Back.easeOut
+    };
+
+    $('#rooms .room-group').each(function() {
+      var articleId = '#' + $(this).attr('id');
+
+      var roomstween = TweenMax.staggerFromTo(
+        articleId + ' ' + '.content', 1, roomOrigin, roomDest
+      );
+
+      var roomsScene = new ScrollScene({
+        triggerElement: articleId,
+        offset: -topoffset,
+        duration: 500
+      }).setPin(articleId).setTween(roomstween).addTo(controller);
+    });
+  } else {
+    //pops in text content for rooms section for touch devices
+    $('#rooms .room-group').each(function() {
+      var articleId = '#' + $(this).attr('id');
+
+      var roomstween = TweenMax.staggerFromTo(
+        articleId + ' ' + '.content',
+        1,
+        {opacity: 0, scale: 0},
+        {delay: 0.1, opacity: 1, scale: 1, ease: Back.easeOut}
+      );
+
+      var roomsScene = new ScrollScene({
+        triggerElement: articleId,
+        offset: -topoffset
+      }).setTween(roomstween).addTo(controller);
+    });
+  }//isTouch check
 
   if(!isTouch) {
     $(window).resize(function() {
