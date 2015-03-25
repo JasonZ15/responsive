@@ -103,8 +103,15 @@ $(function() {
 
     var $ = d.querySelector.bind(d);
 
-    var anim1 = $('#intro .image-animate'),
+    var animNav = $('#nav'),
+        animNavContainer = document.createElement('div'),
+        anim1 = $('#intro .image-animate'),
         anim1Duration = $('#intro article.fullheight').offsetHeight;
+
+        animNavContainer.id = "nav-wrapper";
+        animNavContainer.style['height'] = animNav.offsetHeight + "px";
+        $('header').appendChild(animNavContainer);
+        animNavContainer.appendChild(animNav);
 
     var anim2 = $('#intro .hgroup h1');
 
@@ -141,6 +148,9 @@ $(function() {
       if ((lastScrollY <= anim1Duration) || init) {
         prefix(anim1.style, "Transform", "translate3d(0, " + pos(0, 800, relativeY, 0) + "px, 0)");
         anim2.style["letterSpacing"] = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
+        animNav.style['position'] = "relative";
+      } else {
+        animNav.style['position'] = "fixed";
       }
 
       if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration) || init) {
@@ -205,11 +215,6 @@ $(function() {
       triggerHook: "onLeave"
     }
   });
-
-  //pin down navigation at the top
-  var navPin = new ScrollScene({
-    triggerElement: '#nav',
-  }).setPin('#nav').addTo(controller);
 
   var webdevScene = new ScrollScene({
     triggerElement: "#dining",
