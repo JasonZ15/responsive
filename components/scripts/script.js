@@ -272,14 +272,15 @@ $(function() {
     {delay: 0.3, opacity: 1, scale: 1, ease: Back.easeOut}
   );
 
+  //pops in text content for attractions section
   var attractionsScene = new ScrollScene({
     triggerElement: '#attractions',
     offset: -topoffset
   }).setTween(attractionstween).addTo(controller);
 
+  //animation for room content
   if(!isTouch) {
     $("body").addClass("noTouch");
-    //animation for room content
     var roomOrigin = {
       bottom: -700,
       opacity: 0,
@@ -328,12 +329,6 @@ $(function() {
   }//isTouch check
 
   if(!isTouch) {
-    $(window).resize(function() {
-      welcomeScene.duration($('#intro').height() - topoffset);
-      resumeScene.duration($('#hotelinfo').height() + $(window).height());
-      headerScene.duration($(window).height());
-      webdevScene.duration($('#hotelinfo').height() + $(window).height());
-    });
     $('#nav ul li a').addClass('no-touch');
     $('.brand').addClass('no-touch');
   }//isTouch check
