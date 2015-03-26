@@ -1,8 +1,28 @@
 #rooms {
-  @include background(url('../images/hotel/graphic_design.jpg'));
-  background-repeat: repeat-x;
-  background-position: right -100% top 120px;
   padding-bottom:0;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+
+  .image-animate {
+    @include background(url('../images/hotel/graphic_design.jpg'));
+    background-repeat: repeat-x;
+    position: absolute;
+    top: 120px;
+    left: -100%;
+    width: 200%;
+    height: 200px;
+    z-index: -1;
+
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  }
+  &:hover {
+    .image-animate {
+      transform: translateX(400px);
+    }
+  }
 
   header {
     margin-bottom: 60px;

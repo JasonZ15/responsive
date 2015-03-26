@@ -252,15 +252,6 @@ $(function() {
     TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px, 1100px", ease: Linear.easeNone})
     ]));
 
-  var quoteScene = new ScrollScene({
-    triggerElement: "#rooms"
-  });
-  quoteScene.addTo(controller)
-  .triggerHook("onCenter")
-  .setTween(new TimelineMax().add([
-    TweenMax.fromTo("#rooms", 1, {backgroundPositionX: "100px"}, {backgroundPositionX: "1590px", ease: Expo.easeInOut})
-    ]));
-
   //pops in text content for attractions section
   var attractionstween = TweenMax.staggerFromTo(
     '#attractions article',
