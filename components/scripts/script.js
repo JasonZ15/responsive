@@ -104,6 +104,7 @@ $(function() {
     var $ = d.querySelector.bind(d);
 
     var animNav = $('#nav'),
+        animBrand = $('.brand'),
         animNavContainer = document.createElement('div'),
         anim1 = $('#intro .image-animate'),
         anim1Duration = $('#intro article.fullheight').offsetHeight;
@@ -151,6 +152,9 @@ $(function() {
         animNav.style['position'] = "relative";
       } else {
         animNav.style['position'] = "fixed";
+        if (lastScrollY <= (anim1Duration / 2)) {
+          animBrand.style['backgroundPosition'] = "8px -80px";
+        }
       }
 
       if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration) || init) {
@@ -162,6 +166,9 @@ $(function() {
                       Math.min(relativeY, (anim1Duration / docHeight)),
                       (anim1Duration / 2 / docHeight))
                 + "px, 0)");
+        if (lastScrollY >= (anim1Duration / 2)) {
+          animBrand.style['backgroundPosition'] = "8px 0px";
+        }
       }
 
       if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration)) || init) {
@@ -234,16 +241,6 @@ $(function() {
   .triggerHook("onCenter")
   .setTween(new TimelineMax().add([
     TweenMax.fromTo("#rooms", 1, {backgroundPositionX: "100px"}, {backgroundPositionX: "1590px", ease: Expo.easeInOut})
-    ]));
-
-  var brandScene = new ScrollScene({
-    triggerElement: "#intro h1"
-  });
-  brandScene.addTo(controller)
-  .triggerHook("onLeave")
-  .setTween(new TimelineMax().add([
-    TweenMax.fromTo(".brand", 1, {backgroundPositionY: "-80px"}, {backgroundPositionY: "0px", ease: Elastic.easeInOut}),
-    TweenMax.to(".brand a .small", 1, {opacity: "0", ease: Linear.easeNone})
     ]));
 
   //pops in text content for attractions section
