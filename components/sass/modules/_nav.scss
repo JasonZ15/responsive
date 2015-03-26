@@ -20,11 +20,11 @@ header #nav {
       font-weight: $bold;
       background: $orange;
       -webkit-transition: background-color 0.35s, color 0.35s;
-      transition: background-color 0.35s, color 0.35s;
+      transition: background-color 0.35s, color 0.35s, background-position 0.65s cubic-bezier(.84,-0.74,.23,1.62);
 
       @include background-image(image-url('../images/hotel/logo.png'));
       background-repeat: no-repeat;
-      background-position: 8px top;
+      background-position: 8px -80px;
       background-size: 52px;
 
       @include breakpoint (0 $small) {
