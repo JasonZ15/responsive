@@ -3,6 +3,8 @@
   position: relative;
   z-index: 0;
 
+  overflow: hidden;
+
   article {
     text-align: center;
     @include container(36em);

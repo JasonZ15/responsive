@@ -156,12 +156,12 @@ $(function() {
       if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration) || init) {
         prefix(anim3.style,
                "Transform",
-               "translateY("
+               "translate3d(0,"
                 + pos(0,
                       -6200,
                       Math.min(relativeY, (anim1Duration / docHeight)),
                       (anim1Duration / 2 / docHeight))
-                + "px");
+                + "px, 0)");
       }
 
       if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration)) || init) {
@@ -172,7 +172,7 @@ $(function() {
                       -1800,
                       relativeY,
                       ((anim4Trigger - winHeight) / docHeight))
-                + "px, 0");
+                + "px, 0)");
         prefix(anim4Right.style,
                "Transform",
                "translate3d(0, "
@@ -180,7 +180,7 @@ $(function() {
                       -2400,
                       relativeY,
                       ((anim4Trigger - winHeight) / docHeight))
-                + "px, 0");
+                + "px, 0)");
       }
 
       ticking = false;
