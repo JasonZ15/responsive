@@ -32,6 +32,8 @@ $(function() {
     function updateElements () {
       $('.navbar > ul > li > a').removeClass('active');
       $('.navbar > ul > li > a').each(function() {
+      window.performance.mark("mark_start_navFrame");
+
         var sectionId = $(this).attr('href');
         if (windowpos > ($(sectionId).offset().top - 1)) {
           $('.navbar > ul > li > a').removeClass('active');
@@ -60,6 +62,12 @@ $(function() {
       }
 
       ticking = false;
+
+      window.performance.mark("mark_end_navFrame");
+      window.performance.measure("measure_navFrame", "mark_start_navFrame", "mark_end_navFrame");
+      var timeToGenerate = window.performance.getEntriesByName("measure_navFrame");
+      console.log("Time to update one navFrame: " + timeToGenerate[0].duration + "ms");
+      window.performance.clearMeasures('measure_navFrame');
     }
 
     window.addEventListener('scroll', onScroll, false);
@@ -143,6 +151,8 @@ $(function() {
     }
 
     function updateElements () {
+      window.performance.mark("mark_start_frame");
+
       var relativeY = lastScrollY / docHeight;
 
       if ((lastScrollY <= anim1Duration) || init) {
@@ -191,6 +201,12 @@ $(function() {
       }
 
       ticking = false;
+
+      window.performance.mark("mark_end_frame");
+      window.performance.measure("measure_frame", "mark_start_frame", "mark_end_frame");
+      // var timeToGenerate = window.performance.getEntriesByName("measure_frame");
+      // console.log("Time to update one frame: " + timeToGenerate[0].duration + "ms");
+      // window.performance.clearMeasures('measure_frame');
     }
 
     function pos(base, range, relY, offset) {
