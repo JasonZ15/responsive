@@ -15,14 +15,23 @@ $(function() {
   });
 
   // current nav item active
-  (function() {
-    var windowpos = window.pageYOffset + topoffset;
-    var lastScrollY = window.pageYOffset;
+  (function(win, d) {
+    var lastScrollY = win.pageYOffset;
+    var windowpos = lastScrollY + topoffset;
+
     var ticking = false;
 
+    var nav = d.getElementById('nav'),
+        navItem = $('.navbar > ul > li > a'),
+        navBrand = d.getElementsByClassName('brand')[0],
+        heightHotelinfo = $('#hotelinfo').offset().top,
+        heightRooms = $('#rooms').offset().top,
+        heightContact = $('#contact').offset().top;
+
+
     function onScroll () {
-      windowpos = window.pageYOffset + topoffset;
-      lastScrollY = window.pageYOffset;
+      lastScrollY = win.pageYOffset;
+      windowpos = lastScrollY + topoffset;
       if(!ticking) {
         ticking = true;
         requestAnimationFrame(updateElements);
@@ -30,35 +39,38 @@ $(function() {
     }
 
     function updateElements () {
-      $('.navbar > ul > li > a').removeClass('active');
-      $('.navbar > ul > li > a').each(function() {
       window.performance.mark("mark_start_navFrame");
+
+      navItem.each(function() {
+        this.classList.remove('active');
 
         var sectionId = $(this).attr('href');
         if (windowpos > ($(sectionId).offset().top - 1)) {
-          $('.navbar > ul > li > a').removeClass('active');
-          $(this).addClass('active');
+          for (var i=0; i < navItem.length; i++) {
+            navItem[i].classList.remove('active');
+          }
+          this.classList.add('active');
         }
       });
-      if (windowpos > ($('#rooms').offset().top - 1)) {
-        $('.brand').addClass('inactive');
+      if (windowpos > (heightRooms - 1)) {
+        navBrand.classList.add('inactive');
       } else {
-        $('.brand').removeClass('inactive');
+        navBrand.classList.remove('inactive');
       }
-      if (windowpos > ($('#hotelinfo').offset().top - 1) && windowpos < ($('#rooms').offset().top)) {
-        $('.brand').addClass('resume');
+      if (windowpos > (heightHotelinfo - 1) && windowpos < heightRooms) {
+        navBrand.classList.add('resume');
       } else {
-        $('.brand').removeClass('resume');
+        navBrand.classList.remove('resume');
       }
       if (lastScrollY === 0) {
-        $('.brand').addClass('inactive');
-      } else if (windowpos < $('#hotelinfo').offset().top) {
-        $('.brand').removeClass('inactive');
+        navBrand.classList.add('inactive');
+      } else if (windowpos < heightHotelinfo) {
+        navBrand.classList.remove('inactive');
       }
-      if (windowpos > ($('#contact').offset().top - 1)) {
-        $('#nav').addClass('the-end');
+      if (windowpos > (heightContact - 1)) {
+        nav.classList.add('the-end');
       } else {
-        $('#nav').removeClass('the-end');
+        nav.classList.remove('the-end');
       }
 
       ticking = false;
@@ -70,8 +82,8 @@ $(function() {
       window.performance.clearMeasures('measure_navFrame');
     }
 
-    window.addEventListener('scroll', onScroll, false);
-  })();
+    win.addEventListener('scroll', onScroll, false);
+  })(window, document);
 
   // smooth scroll
   $('a[href*=#]:not([href=#])').click(function() {
