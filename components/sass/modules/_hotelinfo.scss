@@ -143,14 +143,14 @@
     width: 499px;
     height: 150%;
     position: absolute;
-    top: 0;
+    top: -60px;
     z-index: -1;
 
     &.left {
-      left: -100px;
+      left: -165px;
     }
     &.right {
-      right: -100px;
+      right: -135px;
     }
     @include breakpoint(0px $small) {
 
