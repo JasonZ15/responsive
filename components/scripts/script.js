@@ -144,6 +144,13 @@ $(function() {
         anim4Duration = anim4Container.offsetHeight,
         anim4Trigger = anim4Container.offsetTop;
 
+    var anim5Container = $('#dining'),
+        anim5Left = $('#dining .image-animate.left'),
+        anim5RightTop = $('#dining .image-animate.right-top'),
+        anim5RightBottom = $('#dining .image-animate.right-bottom'),
+        anim5Duration = anim5Container.offsetHeight,
+        anim5Trigger = anim5Container.offsetTop + 1000; // add two pin scolling durations of 500 each
+
     var ticking = false;
     var lastScrollY = win.pageYOffset,
         docHeight = $('body').offsetHeight,
@@ -212,6 +219,33 @@ $(function() {
         }
       }
 
+      if (((winHeight + lastScrollY) > anim5Trigger && (lastScrollY) < (anim5Trigger + anim5Duration)) || init) {
+        prefix(anim5Left.style,
+               "Transform",
+               "translate3d(0, "
+                + pos(-200,
+                      1800,
+                      relativeY,
+                      ((anim5Trigger - winHeight) / docHeight))
+                + "px, 0)");
+        prefix(anim5RightTop.style,
+               "Transform",
+               "translate3d(0, "
+                + pos(0,
+                      -1800,
+                      relativeY,
+                      ((anim5Trigger - winHeight) / docHeight))
+                + "px, 0)");
+        prefix(anim5RightBottom.style,
+               "Transform",
+               "translate3d(0, "
+                + pos(200,
+                      1800,
+                      relativeY,
+                      ((anim5Trigger - winHeight) / docHeight))
+                + "px, 0)");
+      }
+
       ticking = false;
 
       window.performance.mark("mark_end_frame");
@@ -252,17 +286,6 @@ $(function() {
       triggerHook: "onLeave"
     }
   });
-
-  var webdevScene = new ScrollScene({
-    triggerElement: "#dining",
-    duration: $('#dining').height() + $(window).height(),
-    offset: 0
-  });
-  webdevScene.addTo(controller)
-  .triggerHook("onEnter")
-  .setTween(new TimelineMax().add([
-    TweenMax.to("#dining", 1, {backgroundPositionY: "600px, -1210px, 1100px", ease: Linear.easeNone})
-    ]));
 
   //pops in text content for attractions section
   var attractionstween = TweenMax.staggerFromTo(

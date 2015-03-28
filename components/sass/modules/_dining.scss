@@ -1,9 +1,7 @@
 #dining {
-  @include background(image-url('../images/hotel/fly_rocket.jpg'),
-                      image-url('../images/hotel/build_rocket.jpg'),
-                      image-url('../images/hotel/fly_rocket.jpg'));
-  background-repeat: no-repeat;
-  background-position: -200px -400px, 110% 300px, right -260px top 0px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 
   h1, h2 {
     color: $red;
@@ -89,5 +87,38 @@
     text-align: center;
     border-top: 1px solid $red;
     border-bottom: 1px solid $red;
+  }
+
+  .image-animate {
+    background-repeat: no-repeat;
+    background-position: center top;
+
+    position: absolute;
+    z-index: -1;
+
+    &.left {
+      @include background(url('../images/hotel/fly_rocket.jpg'));
+      width: 568px;
+      height: 593px;
+      top: 100px;
+      left: -100px;
+    }
+    &.right-top {
+      @include background(url('../images/hotel/build_rocket.jpg'));
+      width: 462px;
+      height: 781px;
+      top: 100px;
+      right: -100px;
+    }
+    &.right-bottom {
+      @include background(url('../images/hotel/fly_rocket.jpg'));
+      width: 568px;
+      height: 593px;
+      bottom: 100px;
+      right: -100px;
+    }
+    @include breakpoint(0px $small) {
+
+    }
   }
 }//dining
