@@ -108,13 +108,13 @@ $(function() {
       }
       if(M[1]=== 'Chrome'){
           tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
-          if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+          if(tem !== null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
       }
       M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-      if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+      if((tem= ua.match(/version\/(\d+)/i))!== null) M.splice(1, 1, tem[1]);
       if (M[0] == 'MSIE' && (M[1] < 11)) {
         $("body").addClass("ieUnder11");
-      };
+      }
       return M;
   })();//browser check ie
 
@@ -130,7 +130,7 @@ $(function() {
         anim1Duration = $('#intro article.fullheight').offsetHeight;
 
         animNavContainer.id = "nav-wrapper";
-        animNavContainer.style['height'] = animNav.offsetHeight + "px";
+        animNavContainer.style.height = animNav.offsetHeight + "px";
         $('header').appendChild(animNavContainer);
         animNavContainer.appendChild(animNav);
 
@@ -176,74 +176,74 @@ $(function() {
 
       if ((lastScrollY <= anim1Duration) || init) {
         prefix(anim1.style, "Transform", "translate3d(0, " + pos(0, 800, relativeY, 0) + "px, 0)");
-        anim2.style["letterSpacing"] = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
-        animNav.style['position'] = "relative";
+        anim2.style.letterSpacing = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
+        animNav.style.position = "relative";
         if (lastScrollY <= (anim1Duration / 2)) {
-          animBrand.style['backgroundPosition'] = "8px -80px";
+          animBrand.style.backgroundPosition = "8px -80px";
         }
       }
 
       if ((lastScrollY >= (anim1Duration / 2) && lastScrollY <= anim1Duration) || init) {
         prefix(anim3.style,
                "Transform",
-               "translate3d(0,"
-                + pos(0,
-                      -6200,
-                      Math.min(relativeY, (anim1Duration / docHeight)),
-                      (anim1Duration / 2 / docHeight))
-                + "px, 0)");
+               "translate3d(0," +
+                pos(0,
+                    -5800,
+                    Math.min(relativeY, (anim1Duration / docHeight)),
+                    (anim1Duration / 2 / docHeight)) +
+                "px, 0)");
         if (lastScrollY >= (anim1Duration / 2)) {
-          animBrand.style['backgroundPosition'] = "8px 0px";
+          animBrand.style.backgroundPosition = "8px 0px";
         }
       }
 
       if (((winHeight + lastScrollY) > anim4Trigger && (lastScrollY) < (anim4Trigger + anim4Duration)) || init) {
         prefix(anim4Left.style,
                "Transform",
-               "translate3d(0, "
-                + pos(0,
-                      -1800,
+               "translate3d(0, " +
+                pos(0,
+                      -1700,
                       relativeY,
-                      ((anim4Trigger - winHeight) / docHeight))
-                + "px, 0)");
+                      ((anim4Trigger - winHeight) / docHeight)) +
+                "px, 0)");
         prefix(anim4Right.style,
                "Transform",
-               "translate3d(0, "
-                + pos(0,
-                      -2400,
+               "translate3d(0, " +
+                pos(0,
+                      -1200,
                       relativeY,
-                      ((anim4Trigger - winHeight) / docHeight))
-                + "px, 0)");
+                      ((anim4Trigger - winHeight) / docHeight)) +
+                "px, 0)");
         if (lastScrollY >= anim1Duration || init) {
-          animNav.style['position'] = "fixed";
+          animNav.style.position = "fixed";
         }
       }
 
       if (((winHeight + lastScrollY) > anim5Trigger && (lastScrollY) < (anim5Trigger + anim5Duration)) || init) {
         prefix(anim5Left.style,
                "Transform",
-               "translate3d(0, "
-                + pos(-200,
+               "translate3d(0, " +
+                pos(-200,
                       1800,
                       relativeY,
-                      ((anim5Trigger - winHeight) / docHeight))
-                + "px, 0)");
+                      ((anim5Trigger - winHeight) / docHeight)) +
+                "px, 0)");
         prefix(anim5RightTop.style,
                "Transform",
-               "translate3d(0, "
-                + pos(0,
+               "translate3d(0, " +
+                pos(0,
                       -1800,
                       relativeY,
-                      ((anim5Trigger - winHeight) / docHeight))
-                + "px, 0)");
+                      ((anim5Trigger - winHeight) / docHeight)) +
+                "px, 0)");
         prefix(anim5RightBottom.style,
                "Transform",
-               "translate3d(0, "
-                + pos(200,
+               "translate3d(0, " +
+                pos(200,
                       1800,
                       relativeY,
-                      ((anim5Trigger - winHeight) / docHeight))
-                + "px, 0)");
+                      ((anim5Trigger - winHeight) / docHeight)) +
+                "px, 0)");
       }
 
       ticking = false;
