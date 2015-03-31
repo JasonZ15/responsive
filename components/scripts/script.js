@@ -168,6 +168,14 @@ $(function() {
         requestAnimationFrame(updateElements);
       }
     }
+    function onScrollMobile (evt) {
+      lastScrollY = win.pageYOffset;
+      if (lastScrollY >= anim1Duration) {
+        animNav.style.position = "fixed";
+      } else {
+        animNav.style.position = "relative";
+      }
+    }
 
     function updateElements () {
       // window.performance.mark("mark_start_frame");
@@ -270,8 +278,12 @@ $(function() {
       return Math.max(min, Math.min(max, value));
     }
 
-    win.addEventListener('resize', onResize, false);
-    win.addEventListener('scroll', onScroll, false);
+    if(!isTouch) {
+      win.addEventListener('resize', onResize, false);
+      win.addEventListener('scroll', onScroll, false);
+    } else {
+      win.addEventListener('scroll', onScrollMobile, false);
+    }
 
     var init = true;
     updateElements();
