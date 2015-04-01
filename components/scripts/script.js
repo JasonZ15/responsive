@@ -279,17 +279,15 @@ $(function() {
     }
 
     if(!isTouch) {
+      var init = true;
+      updateElements();
+      init = false;
+      updateElements();
       win.addEventListener('resize', onResize, false);
       win.addEventListener('scroll', onScroll, false);
     } else {
       win.addEventListener('scroll', onScrollMobile, false);
     }
-
-    var init = true;
-    updateElements();
-    init = false;
-    updateElements();
-
   })(window, document);
 
   //set up ScrollMagic
@@ -316,6 +314,9 @@ $(function() {
   //animation for room content
   if(!isTouch) {
     $("body").addClass("noTouch");
+    $('#nav ul li a').addClass('no-touch');
+    $('.brand').addClass('no-touch');
+
     var roomOrigin = {
       bottom: -700,
       opacity: 0,
@@ -345,6 +346,8 @@ $(function() {
       }).setPin(articleId).setTween(roomstween).addTo(controller);
     });
   } else {
+    $("body").addClass("touch");
+
     //pops in text content for rooms section for touch devices
     $('#rooms .room-group').each(function() {
       var articleId = '#' + $(this).attr('id');
@@ -361,10 +364,5 @@ $(function() {
         offset: -topoffset
       }).setTween(roomstween).addTo(controller);
     });
-  }//isTouch check
-
-  if(!isTouch) {
-    $('#nav ul li a').addClass('no-touch');
-    $('.brand').addClass('no-touch');
-  }//isTouch check
+  } //isTouch check
 });

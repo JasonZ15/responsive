@@ -27,6 +27,9 @@ header #nav {
       background-repeat: no-repeat;
       background-position: 8px -80px;
       background-size: 52px;
+      .touch & {
+        background-position: center 0px;
+      }
 
       @include breakpoint (0 $small) {
         @include span(3 of 12);
@@ -58,6 +61,9 @@ header #nav {
           span.big {display: none}
           span.small {display: inline}
         }//breakpoint
+        .touch & {
+          span {display: none}
+        }
       }//a
     }//brand
     ul {
