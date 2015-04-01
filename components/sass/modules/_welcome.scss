@@ -87,5 +87,10 @@
     left: 0;
     right: 0;
     z-index: -1;
+
+    @include breakpoint(0 $narrow) {
+      top: 30px;
+      left: -80%;
+    }
   }
 }//welcome

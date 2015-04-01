@@ -146,14 +146,19 @@
     top: -60px;
     z-index: -1;
 
-    &.left {
-      left: -165px;
-    }
-    &.right {
-      right: -135px;
+    &.left  { left:  -165px; }
+    &.right { right: -135px; top: -120px; }
+    @include breakpoint(0px $medium) {
+      &.left  { left:  -265px; }
+      &.right { right: -245px; }
     }
     @include breakpoint(0px $small) {
-
+      &.left  { left:  -325px; }
+      &.right { right: -315px; }
+    }
+    @include breakpoint(0px $narrow) {
+      &.left  { left:  -365px; }
+      &.right { right: -365px; }
     }
   }
 }

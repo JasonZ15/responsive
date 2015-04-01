@@ -17,6 +17,11 @@
     transition-property: transform;
     transition-duration: 1s;
     transition-timing-function: cubic-bezier(1, 0, 0, 1);
+
+    @include breakpoint(0 $narrow) {
+      left: -220%;
+      width: 400%;
+    }
   }
   &:hover {
     .image-animate {
