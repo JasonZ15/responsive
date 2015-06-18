@@ -24,10 +24,16 @@ $(function() {
     var nav = d.getElementById('nav'),
         navItem = $('.navbar > ul > li > a'),
         navBrand = d.getElementsByClassName('brand')[0],
-        heightHotelinfo = $('#hotelinfo').offset().top,
-        heightRooms = $('#rooms').offset().top,
-        heightContact = $('#contact').offset().top;
+        heightHotelinfo,
+        heightRooms,
+        heightContact;
 
+    $(win).load(function() {
+      heightHotelinfo = $('#hotelinfo').offset().top; // every time you load the page it get assigned with a different value. when loading from a server. page gets constructed differently. it must be the images!loading time!
+      heightRooms = $('#rooms').offset().top;
+      heightContact = $('#contact').offset().top;
+      updateElements();
+    });
 
     function onScroll () {
       lastScrollY = win.pageYOffset;
