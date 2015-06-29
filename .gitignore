@@ -2,7 +2,7 @@
 node_modules
 .tmp
 .sass-cache
-builds/**/images/*
+builds/jasonz15.github.io/images/*
 builds/development/components
 builds/development/css/*
 builds/development/js/*
