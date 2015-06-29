@@ -54,15 +54,32 @@ gulp.task('js', function() {
     .pipe(gulpif(env === 'production', uglify()))
     .pipe(gulp.dest(outputDir + 'js'))
     .pipe(connect.reload());
+
+  gulp.src(['components/scripts/plugins.js'])
+    .on('error', gutil.log)
+    .pipe(gulpif(env === 'production', uglify()))
+    .pipe(gulp.dest(outputDir + 'js'))
+    .pipe(connect.reload());
+
+  gulp.src(['components/scripts/main.js'])
+    .on('error', gutil.log)
+    .pipe(gulpif(env === 'production', uglify()))
+    .pipe(gulp.dest(outputDir + 'js'))
+    .pipe(connect.reload());
+
+  gulp.src(['components/scripts/dinosour.js'])
+    .pipe(gulp.dest(outputDir + 'js'));
 });
 
 gulp.task('vendor', function() {
   gulp.src(['components/vendor/jquery/*.js',
             'components/vendor/three/*.js',
-            'components/vendor/pace/*.js'])
-    .pipe(gulp.dest(outputDir + 'js'));
-  gulp.src(['components/vendor/pace/*.css'])
-    .pipe(gulp.dest(outputDir + 'css'));
+            'components/vendor/pace/*.js',
+            'components/vendor/modernizr/*.js'])
+    .pipe(gulp.dest(outputDir + 'js/vendor'));
+  gulp.src(['components/vendor/pace/*.css',
+            'components/vendor/normalize/*.css'])
+    .pipe(gulp.dest(outputDir + 'css/vendor'));
 });
 
 gulp.task('compass', function() {
