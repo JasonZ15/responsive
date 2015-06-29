@@ -78,6 +78,7 @@ gulp.task('vendor', function() {
             'components/vendor/modernizr/*.js'])
     .pipe(gulp.dest(outputDir + 'js/vendor'));
   gulp.src(['components/vendor/pace/*.css',
+            'components/vendor/html5boilerplate/*.css',
             'components/vendor/normalize/*.css'])
     .pipe(gulp.dest(outputDir + 'css/vendor'));
 });
