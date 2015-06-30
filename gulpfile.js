@@ -95,12 +95,13 @@ gulp.task('compass', function() {
     })
     .on('error', gutil.log))
 //    .pipe(gulp.dest( outputDir + 'css'))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 gulp.task('watch', function() {
   gulp.watch(jsSources, ['js']);
   gulp.watch(['components/sass/*.scss', 'components/sass/*/*.scss'], ['compass']);
+  gulp.watch('components/vendor/**/*.*', ['vendor']);
   gulp.watch('builds/development/*.html', ['html']);
 });
 
@@ -115,7 +116,7 @@ gulp.task('html', function() {
   gulp.src('builds/development/*.html')
     .pipe(gulpif(env === 'production', minifyHTML()))
     .pipe(gulpif(env === 'production', gulp.dest(outputDir)))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 // Copy images to production
