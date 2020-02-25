@@ -20,6 +20,9 @@
     "gulp-minify-html": "^0.1.4",
     "gulp-imagemin": "^2.2.1 ",
     "imagemin-pngquant": "^4.0.0",
-    "ngrok": "^0.1.99"
+    "ngrok": "^3.2.7"
+  },
+  "dependencies": {
+    "susy": "^3.0.5"
   }
 }

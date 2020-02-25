@@ -190,7 +190,7 @@ $(function() {
 
       if ((lastScrollY <= anim1Duration) || init) {
         prefix(anim1.style, "Transform", "translate3d(0, " + pos(0, 800, relativeY, 0) + "px, 0)");
-        anim2.style.letterSpacing = Math.min(25, pos(0, 800, relativeY, 0)) + "px";
+        anim2.style.letterSpacing = Math.min(55, pos(0, 800, relativeY, 0)) + "px";
         animNav.style.position = "relative";
         if (lastScrollY <= (anim1Duration / 2)) {
           animBrand.style.backgroundPosition = "8px -80px";
